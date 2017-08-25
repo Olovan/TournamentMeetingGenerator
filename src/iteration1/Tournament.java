@@ -51,11 +51,13 @@ public class Tournament {
 	// TODO: Micah
 	// Teams assign themselves to closest host
 	private Match[] assignTeamsToHosts(School[] hosts, School[] participants) {
+		return null;
 	}
 	
 	// TODO: Micah
 	// Makes sure each team has minimum number of hosts
 	private Match[] balanceHosts(Match[] matches) {
+		return null;
 	}
 	
 }

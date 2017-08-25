@@ -7,6 +7,9 @@ public class Configuration {
 	public int numberOfRegionalHosts = 16;
 	public int numberOfSemiStateHosts = 4;
 	
+	public boolean useBreakpoints = false;
+	public int[] classBreakpoints = {200, 400, 800};
+	
 	//TODO:MICAH
 	public void loadFromFile(String filename) {
 	}
