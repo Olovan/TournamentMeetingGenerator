@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //This class represents a single tournament match
 public class Match {
 	public School host;
-	public ArrayList<School> schools; //Schools competing in the match
+	public ArrayList<School> schools = new ArrayList<>(); //Schools competing in the match
 	
 	void addSchool(School school) {
 		schools.add(school);
@@ -22,4 +22,20 @@ public class Match {
 		otherMatch.removeSchool(theirSchool);
 
 	}
+        
+        // Create Match listing
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            
+            // header
+            sb.append("Hosted by " + host + "\n");
+            sb.append("=========================================================\n");
+            
+            // list competing schools
+            for (School sc : schools) {
+                sb.append(sc + "\n");
+            }
+            
+            return sb.toString();
+        }
 }

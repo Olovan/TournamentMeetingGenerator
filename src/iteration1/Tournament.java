@@ -60,4 +60,28 @@ public class Tournament {
 		return null;
 	}
 	
+        // TODO: Ryan
+        private String formatString() {
+            String tournySchedule = "temp";
+
+            // loop sectionals
+            
+            // loop regionals
+            
+            // loop semiState
+            
+            // add state
+            
+            return tournySchedule;
+        }
+        
+        // TODO: Ryan
+        public void outputToFile() {
+            // write formated String to text file
+        }
+        
+        // TODO: Ryan
+        public String toString() {
+            return formatString();
+        }
 }
