@@ -31,6 +31,9 @@ public class School {
 	public void DistanceToSchool (String school1, String school2) {
 		
 	}
-	
+        
+        public String toString() {
+            return schoolName;
+        }	
 }
 
