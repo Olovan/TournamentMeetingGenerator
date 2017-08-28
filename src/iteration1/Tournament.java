@@ -2,6 +2,11 @@ package iteration1;
 
 import java.util.ArrayList;
 
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+
 public class Tournament {
 	String         tournamentName;
 	Configuration  config;
@@ -102,54 +107,84 @@ public class Tournament {
 		return retMatches;
 	}
 	
-        // TODO: Ryan
+        // TO DO Ryan
+        // center titles
         private String formatString() {
             StringBuilder sb = new StringBuilder();
-            sb.append("\t\t\t").append(tournamentName);
+            sb.append(tournamentName);
             
             // list sectionals
-            sb.append("\n\t\t\tSECTIONALS");
+            sb.append("\r\n\r\n\t\t\tSECTIONALS");
             for(int i = 0; i < sectionals.length; i++) {
                 // header
-                sb.append("\nSectional #").append(i + 1).append("\n");
+                sb.append("\r\nSectional #").append(i + 1).append("\r\n");
                 
                 // match listing
                 sb.append(sectionals[i].toString());
             }
             
             // list regionals
-            sb.append("\n\t\t\tREGIONALS");
+            sb.append("\r\n\t\t\tREGIONALS");
             for(int i = 0; i < regionals.length; i++) {
                 // header
-                sb.append("\nRegional #").append(i + 1).append("\n");
+                sb.append("\r\nRegional #").append(i + 1).append("\r\n");
                 
                 // match listing
                 sb.append(regionals[i].toString());
             }
             
             // list semi-state
-            sb.append("\n\t\t\tSEMISTATE");
+            sb.append("\r\n\t\t\tSEMISTATE");
             for(int i = 0; i < semiState.length; i++) {
                 // header
-                sb.append("\nSemi-State #").append(i + 1).append("\n");
+                sb.append("\r\nSemi-State #").append(i + 1).append("\r\n");
                 
                 // match listing
                 sb.append(semiState[i].toString());
             }
             
             // list state
-            sb.append("\n\t\t\tSTATE\n");
+            sb.append("\r\n\t\t\tSTATE\r\n");
             sb.append(finals.toString());
             
             return sb.toString();
         }
         
         // TODO: Ryan
+        // Have user name the file and choose its path
+        // Handle IO Exceptions
         public void outputToFile() {
-            // write formated String to text file
+            String filename = tournamentName + ".txt"; // TEMP
+            String path = "etc/"; // TEMP
+            
+            String output;
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            
+            try {
+                output = formatString();
+                fw = new FileWriter(new File(path, filename));
+                bw = new BufferedWriter(fw);
+                bw.write(output);
+            }
+            catch (IOException e) {
+                // do something???
+            }
+            finally {
+                try {
+                    if (bw != null) {
+                        bw.close();
+                    }
+                    if (fw != null) {
+                        fw.close();
+                    }
+                }
+                catch (IOException e) {
+                    // do something???
+                }
+            }
         }
         
-        // TODO: Ryan
         public String toString() {
             return formatString();
         }
