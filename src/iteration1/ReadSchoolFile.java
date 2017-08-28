@@ -24,7 +24,7 @@ public class ReadSchoolFile {
 			
 			// Reads a single line until there are none left to read
 			while (line != null) {
-				// A token to take 6 columns separated by commas
+				// A token to take 8 columns separated by commas
 				String[] schoolInfo  = line.split(",");
 					
 				School school = SetSchoolInfo(schoolInfo);
@@ -51,7 +51,9 @@ public class ReadSchoolFile {
 		int hostSectionals = Integer.parseInt(schoolInfo[3]);
 		int hostRegionals = Integer.parseInt(schoolInfo[4]);
 		int hostSemiState = Integer.parseInt(schoolInfo[5]);
+		double longitude = Double.parseDouble(schoolInfo[6]);
+		double latitude = Double.parseDouble(schoolInfo[7]);
 		
-		return new School(name, total, part, hostSectionals, hostRegionals, hostSemiState);
+		return new School(name, total, part, hostSectionals, hostRegionals, hostSemiState, longitude, latitude);
 	}
 }

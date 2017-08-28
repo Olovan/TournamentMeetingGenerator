@@ -13,13 +13,15 @@ public class School {
     private double longitude;
     private double latitude;
 
-    public School (String name, int total, int par, int sec, int reg, int sem) {
+    public School (String name, int total, int par, int sec, int reg, int sem, double lon, double lat) {
         this.schoolName = name;
         this.enrollment = total;
         this.participation = par;
         this.hostSectionals = sec;
         this.hostRegionals = reg;
         this.hostSemiState = sem;
+        this.longitude = lon;
+        this.latitude = lat;
     }
 
     public String PrintSchool () {
@@ -28,7 +30,9 @@ public class School {
             "\nParticipating: " + participation +
             "\nWould host Sectionals: " + hostSectionals + 
             "\nWould host Regionals: " + hostRegionals + 
-            "\nWould host Semi-State: " + hostSemiState + "\n";
+            "\nWould host Semi-State: " + hostSemiState + 
+            "\nLongitude: " + longitude +
+            "\nLatitude: " + latitude + "\n";
     }
 
     //Returns distance between 2 schools in miles
