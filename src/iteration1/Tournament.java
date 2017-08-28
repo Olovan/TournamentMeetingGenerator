@@ -50,14 +50,55 @@ public class Tournament {
 	
 	// TODO: Micah
 	// Teams assign themselves to closest host
-	private Match[] assignTeamsToHosts(School[] hosts, School[] participants) {
-		return null;
+	private Match[] assignTeamsToHosts(School[] hosts, School[] participants, int numHosts) {
+        //TODO error checking to make sure there are enough hosts
+        Match[] matches = new Match[numHosts];
+
+        for(int i = 0; i < numHosts; i++) 
+        {
+            matches[i].host = hosts[i];
+        }
+
+        for(School school : participants)
+        {
+            sortMatchesByProximity(school, matches)[0].schools.add(school);
+        }
+        
+        
+        return matches;
 	}
 	
 	// TODO: Micah
 	// Makes sure each team has minimum number of hosts
 	private Match[] balanceHosts(Match[] matches) {
 		return null;
+	}
+	
+	//Returns a sorted list of the Matches ordered from closest to furthest away
+	private Match[] sortMatchesByProximity(School school, Match[] matches) {
+		Match[] retMatches = new Match[matches.length];
+		for(int i = 0; i < retMatches.length; i++)
+			retMatches[i] = matches[i];
+		
+		for(int i = 0; i < retMatches.length; i++) {
+			Match closest = retMatches[i];
+			double closestDistance = School.DistanceBetweenSchools(school, closest.host);
+			int closestIndex = i;
+			for(int j = i; j < retMatches.length; j++) {
+				if(School.DistanceBetweenSchools(school, retMatches[j].host) < closestDistance) {
+					closest = retMatches[j];
+					closestDistance = School.DistanceBetweenSchools(school, closest.host);
+					closestIndex = j;
+				}
+			}
+			
+			//Swap the closest remaining index with the first unsorted index
+			Match temp = retMatches[i];
+			retMatches[i] = closest;
+			retMatches[closestIndex] = temp;
+		}
+		
+		return retMatches;
 	}
 	
         // TODO: Ryan
