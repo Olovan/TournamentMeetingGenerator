@@ -28,16 +28,16 @@ public class Match {
             StringBuilder sb = new StringBuilder();
             
             // header
-            sb.append("Hosted by ").append(host).append("\n");
-            sb.append("=========================================================\n");
+            sb.append("Hosted by ").append(host).append("\r\n");
+            sb.append("=========================================================\r\n");
             
             // list competing schools
             for (School sc : schools) {
-                sb.append(sc + "\n");
+                sb.append(sc + "\r\n");
             }
             
             // footer
-            sb.append("=========================================================\n");
+            sb.append("=========================================================\r\n");
             return sb.toString();
         }
 }
