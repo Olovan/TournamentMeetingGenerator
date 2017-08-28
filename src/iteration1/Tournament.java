@@ -13,7 +13,8 @@ public class Tournament {
 
 	//TODO: Micah
 	public Tournament(String name, School[] participants, School[] hosts, Configuration config) {
-	}
+            tournamentName = name;
+        }
 	
 	
 	//Gets all the hosts willing to host at a specific level
@@ -103,17 +104,44 @@ public class Tournament {
 	
         // TODO: Ryan
         private String formatString() {
-            String tournySchedule = "temp";
-
-            // loop sectionals
+            StringBuilder sb = new StringBuilder();
+            sb.append("\t\t\t").append(tournamentName);
             
-            // loop regionals
+            // list sectionals
+            sb.append("\n\t\t\tSECTIONALS");
+            for(int i = 0; i < sectionals.length; i++) {
+                // header
+                sb.append("\nSectional #").append(i + 1).append("\n");
+                
+                // match listing
+                sb.append(sectionals[i].toString());
+            }
             
-            // loop semiState
+            // list regionals
+            sb.append("\n\t\t\tREGIONALS");
+            for(int i = 0; i < regionals.length; i++) {
+                // header
+                sb.append("\nRegional #").append(i + 1).append("\n");
+                
+                // match listing
+                sb.append(regionals[i].toString());
+            }
             
-            // add state
+            // list semi-state
+            sb.append("\n\t\t\tSEMISTATE");
+            for(int i = 0; i < semiState.length; i++) {
+                // header
+                sb.append("\nSemi-State #").append(i + 1).append("\n");
+                
+                // match listing
+                sb.append(semiState[i].toString());
+            }
             
-            return tournySchedule;
+            // list state
+            sb.append("\n\t\t\tSTATE\n");
+            sb.append(finals.toString());
+            
+            return sb.toString();
         }
         
         // TODO: Ryan

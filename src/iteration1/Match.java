@@ -28,7 +28,7 @@ public class Match {
             StringBuilder sb = new StringBuilder();
             
             // header
-            sb.append("Hosted by " + host + "\n");
+            sb.append("Hosted by ").append(host).append("\n");
             sb.append("=========================================================\n");
             
             // list competing schools
@@ -36,6 +36,8 @@ public class Match {
                 sb.append(sc + "\n");
             }
             
+            // footer
+            sb.append("=========================================================\n");
             return sb.toString();
         }
 }
