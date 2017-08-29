@@ -7,15 +7,15 @@ public class Match {
 	public School host;
 	public ArrayList<School> schools = new ArrayList<>(); //Schools competing in the match
 	
-	void addSchool(School school) {
+	public void addSchool(School school) {
 		schools.add(school);
 	}
 	
-	void removeSchool(School school) {
+	public void removeSchool(School school) {
 		schools.remove(school);
 	}
 	
-	void swapSchools(Match otherMatch, School mySchool, School theirSchool) {
+	public void swapSchools(Match otherMatch, School mySchool, School theirSchool) {
 		this.addSchool(theirSchool);
 		this.removeSchool(mySchool);
 		otherMatch.addSchool(mySchool);

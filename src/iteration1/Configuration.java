@@ -9,6 +9,8 @@ public class Configuration {
 	
 	public boolean useBreakpoints = false;
 	public int[] classBreakpoints = {200, 400, 800};
+	public int[] minTeamsPerHost { 8, 2, 4 };
+
 	
 	//TODO:MICAH
 	public void loadFromFile(String filename) {
