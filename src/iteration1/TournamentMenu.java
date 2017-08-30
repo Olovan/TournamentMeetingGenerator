@@ -1,11 +1,19 @@
 package iteration1;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+
+import java.io.File;
+import java.awt.event.ActionListener;
 
 public class TournamentMenu {
 
@@ -49,6 +57,32 @@ public class TournamentMenu {
 		frame.getContentPane().add(lblTournamentFile);
 		
 		JButton btnFind = new JButton("Find");
+		btnFind.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser fileChooser = new JFileChooser();
+				
+				// Initial directory
+				fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+				
+				// Allows only a certain extension to be chosen.
+		        fileChooser.setAcceptAllFileFilterUsed(false);
+		        FileNameExtensionFilter filter = new FileNameExtensionFilter("Comma Separated Values", "csv");
+		        fileChooser.addChoosableFileFilter(filter);
+		        fileChooser.showOpenDialog(null);
+		        
+				int result = fileChooser.showOpenDialog(fileChooser);
+		     
+				
+				// Check if user selects a file
+				if (result == JFileChooser.APPROVE_OPTION) {
+				    File selectedFile = fileChooser.getSelectedFile();
+				    textField.setText(selectedFile.getAbsolutePath());
+				    // TODO: Send to next menu
+				} else {
+					JOptionPane.showMessageDialog(null, "You didn't select a file.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnFind.setBounds(282, 152, 117, 25);
 		frame.getContentPane().add(btnFind);
 		
@@ -58,7 +92,7 @@ public class TournamentMenu {
 		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(235, 215, 117, 25);
+		btnOk.setBounds(160, 213, 117, 25);
 		frame.getContentPane().add(btnOk);
 	}
 
