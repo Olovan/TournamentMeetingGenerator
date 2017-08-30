@@ -50,7 +50,8 @@ public class School {
 
         return c * EARTH_RADIUS;
     }
-
+    
+    // return School's name
     public String toString() {
         return schoolName;
     }	

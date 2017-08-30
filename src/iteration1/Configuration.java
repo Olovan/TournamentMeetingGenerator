@@ -9,7 +9,7 @@ public class Configuration {
 	public int numberOfSectionalHosts = 32;
 	public int numberOfRegionalHosts = 16;
 	public int numberOfSemiStateHosts = 4;
-	public int[] minTeamsPerHost { 8, 2, 4 };
+	public int[] minTeamsPerHost = { 8, 2, 4 };
 	
 	public boolean useBreakpoints = false;
 	public int numberOfClasses = 4;

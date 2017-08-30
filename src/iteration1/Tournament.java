@@ -145,71 +145,102 @@ public class Tournament {
 		return retMatches;
 	}
 
-	// TO DO Ryan
-	// center titles
+        // Format tournament schedule into tabular form.
 	private String formatString() {
-		StringBuilder sb = new StringBuilder();
+		String meetClosed = "\r\nNOT HELD THIS YEAR\r\n";
+                StringBuilder sb = new StringBuilder();
 		sb.append(tournamentName);
 
-		// list sectionals
+		// list sectionals if held
 		sb.append("\r\n\r\n\t\t\tSECTIONALS");
-		for(int i = 0; i < sectionals.length; i++) {
+                if (sectionals == null || sectionals[0] == null) {
+                    sb.append(meetClosed);
+                }
+                else {
+                    for(int i = 0; i < sectionals.length; i++) {
 			// header
 			sb.append("\r\nSectional #").append(i + 1).append("\r\n");
 
 			// match listing
 			sb.append(sectionals[i].toString());
-		}
+                    }
+                }
 
-		// list regionals
+		// list regionals if held
 		sb.append("\r\n\t\t\tREGIONALS");
-		for(int i = 0; i < regionals.length; i++) {
-			// header
-			sb.append("\r\nRegional #").append(i + 1).append("\r\n");
+                if (regionals == null || regionals[0] == null) {
+                    sb.append(meetClosed);
+                }
+                else {
+                    for(int i = 0; i < regionals.length; i++) {
+                            // header
+                            sb.append("\r\nRegional #").append(i + 1).append("\r\n");
 
-			// match listing
-			sb.append(regionals[i].toString());
-		}
+                            // match listing
+                            sb.append(regionals[i].toString());
+                    }
+                }
 
-		// list semi-state
+		// list semi-state if held
 		sb.append("\r\n\t\t\tSEMISTATE");
-		for(int i = 0; i < semiState.length; i++) {
-			// header
-			sb.append("\r\nSemi-State #").append(i + 1).append("\r\n");
+                if (semiState == null || semiState[0] == null) {
+                    sb.append(meetClosed);
+                }
+                else {
+                    for(int i = 0; i < semiState.length; i++) {
+                            // header
+                            sb.append("\r\nSemi-State #").append(i + 1).append("\r\n");
 
-			// match listing
-			sb.append(semiState[i].toString());
-		}
+                            // match listing
+                            sb.append(semiState[i].toString());
+                    }
+                }
 
-		// list state
-		sb.append("\r\n\t\t\tSTATE\r\n");
-		sb.append(finals.toString());
-
-		return sb.toString();
+		// list state if held
+		sb.append("\r\n\t\t\t  STATE\r\n");
+                if (finals == null) {
+                    sb.append(meetClosed);
+                }
+                else {    
+                    sb.append(finals.toString());
+                }
+		
+                return sb.toString();
 	}
 
-	// TODO: Ryan
-	// Have user name the file and choose its path
-	// Handle IO Exceptions
-	public void outputToFile() {
-		String filename = tournamentName + ".txt"; // TEMP
-		String path = "etc/"; // TEMP
-
+        // Save tournament schedule, in tabular form, to a text file specified by the user.
+        // @return: True if text file was successfully created and written to,
+        //          False otherwise.
+	public boolean outputToFile(String filename, String path) {
+		// check parameters and set defaults if required
+                if (path == null){
+                    return false;
+                }
+                else if (filename == null) {
+                    filename = tournamentName + ".txt";
+                }
+                else {
+                    filename = filename + ".txt";
+                }
+                
+                // prepare for writing
 		String output;
 		FileWriter fw = null;
 		BufferedWriter bw = null;
 
 		try {
-			output = formatString();
+			// create file and write tournament schedule
+                        output = formatString();
 			fw = new FileWriter(new File(path, filename));
 			bw = new BufferedWriter(fw);
 			bw.write(output);
 		}
 		catch (IOException e) {
-			// do something???
+			return false;
 		}
 		finally {
-			try {
+			// close file
+                        try {
 				if (bw != null) {
 					bw.close();
 				}
@@ -218,11 +249,14 @@ public class Tournament {
 				}
 			}
 			catch (IOException e) {
-				// do something???
+				return false;
 			}
 		}
+                
+                return true;
 	}
 
+        // Get tournament schedule in tabular form.
 	public String toString() {
 		return formatString();
 	}
