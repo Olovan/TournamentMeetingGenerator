@@ -1,0 +1,13 @@
+//Host Configuration
+Number_of_Sectional_Hosts 32
+Number_of_Regional_Hosts 16
+Number_of_Semi-State_Hosts 4
+
+//Numbers are arranged Sectionals - Regionals - SemiState
+Minimum_Teams_Per_Host 8 2 4
+
+//Enrollment Size Class Configuration
+Use_Breakpoints false
+Number_Of_Classes 4
+Class_Breakpoints 200 400 800
+
