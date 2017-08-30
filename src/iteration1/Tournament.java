@@ -27,8 +27,8 @@ public class Tournament {
 		School[] stateHost = getHostsForMeet(4, hosts);
 
 		sectionals = assignTeams(sectionalHosts, participants, config.numberOfSectionalHosts);
-		regionals = assignTeams(regionalHosts, sectionalHosts, config.numberOfSectionalHosts);
-		semiState = assignTeams(semiStateHosts, regionalHosts, config.numberOfSectionalHosts);
+		regionals = assignTeams(regionalHosts, sectionalHosts, config.numberOfRegionalHosts);
+		semiState = assignTeams(semiStateHosts, regionalHosts, config.numberOfSemiStateHosts);
 		finals = assignTeams(stateHost, semiStateHosts, 1);
 
 		balanceHosts(sectionals, config.minTeamsPerHost[0]);

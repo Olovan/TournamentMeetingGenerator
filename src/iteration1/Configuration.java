@@ -9,11 +9,11 @@ public class Configuration {
 	public int numberOfSectionalHosts = 32;
 	public int numberOfRegionalHosts = 16;
 	public int numberOfSemiStateHosts = 4;
-
+	public int[] minTeamsPerHost { 8, 2, 4 };
+	
 	public boolean useBreakpoints = false;
 	public int numberOfClasses = 4;
 	public int[] classBreakpoints = {200, 400, 800};
-	public int[] minTeamsPerHost { 8, 2, 4 };
 
 	public Configuration(String filename) {
 		loadFromFile(filename);
