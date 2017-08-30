@@ -2,12 +2,15 @@ package iteration1;
 
 import java.util.ArrayList;
 
-import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class Tournament {
+public class Tournament implements Serializable {
 	String         tournamentName;
 	Configuration  config;
 	School[]       participants;
@@ -255,7 +258,45 @@ public class Tournament {
                 
                 return true;
 	}
-
+        
+        // [TODO: Ryan Arnold]
+        // [NEEDS TESTING]
+        // Save current Tournament data to a user specied text file.
+        // @return: True if Tournament was written serialized to a file,
+        // False otherwise.
+        public boolean save(String filename, String path) {
+            // check parameters and set defaults if required
+            if (path == null){
+                return false;
+            }
+            else if (filename == null) {
+                filename = tournamentName + ".txt";
+                }
+            else {
+                filename = filename + ".txt";
+            }
+            
+            // prepare for writing
+            FileOutputStream fOut;
+            ObjectOutputStream oOut;
+            
+            try {
+                // write Tournamnet to file
+                fOut = new FileOutputStream(new File(filename));
+                oOut = new ObjectOutputStream(fOut);
+                oOut.writeObject(this);
+                
+                // close stream
+                fOut.close();
+                oOut.close();
+            }
+            catch (IOException e) {
+                return false;
+            }
+            
+            return true;
+        }
+        
         // Get tournament schedule in tabular form.
 	public String toString() {
 		return formatString();
