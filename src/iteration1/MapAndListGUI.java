@@ -3,7 +3,6 @@ package iteration1;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.nio.file.Files;
 import javax.swing.*;
 
 public class MapAndListGUI extends JFrame {
@@ -15,16 +14,16 @@ public class MapAndListGUI extends JFrame {
     private final int WINDOW_HEIGHT = 1000;
     
     // menu bar and elements
-    JMenuBar menuBar;
-    JMenu fileMenu;
-    JMenuItem generateMenuItem;
-    JMenuItem saveMenuItem;
-    JMenuItem loadMenuItem;
-    JMenuItem exitMenuItem;
+    private JMenuBar menuBar;
+    private JMenu fileMenu;
+    private JMenuItem generateMenuItem;
+    private JMenuItem saveMenuItem;
+    private JMenuItem loadMenuItem;
+    private JMenuItem exitMenuItem;
     
     // output displays
-    JPanel mapPanel;
-    JPanel listPanel;
+    private JPanel mapPanel;
+    private JPanel listPanel;
     
     // TODO Ryan
     // Constructor
@@ -33,7 +32,7 @@ public class MapAndListGUI extends JFrame {
         setTitle("Tournament Meeting Generator");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setLayout(new GridLayout(1,2));
         
         // create menus
         menuBar = new JMenuBar();
@@ -62,8 +61,8 @@ public class MapAndListGUI extends JFrame {
         // create output displays then add to frame
         mapPanel = new MapPanel();
         listPanel = new ListPanel();
-        add(mapPanel, BorderLayout.WEST);
-        add(listPanel, BorderLayout.EAST);
+        add(mapPanel);
+        add(listPanel);
     }
     
     // TODO Ryan 

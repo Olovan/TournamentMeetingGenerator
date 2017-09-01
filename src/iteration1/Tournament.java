@@ -201,11 +201,17 @@ public class Tournament implements Serializable {
 
 		// list state if held
 		sb.append("\r\n\t\t\t  STATE\r\n");
-                if (finals == null) {
+                if (finals == null || finals[0] == null) {
                     sb.append(meetClosed);
                 }
-                else {    
-                    sb.append(finals.toString());
+                else {
+                    for(int i = 0; i < finals.length; i++) {
+                            // header
+                            sb.append("\r\nState #").append(i + 1).append("\r\n");
+
+                            // match listing
+                            sb.append(finals[i].toString());
+                    }
                 }
 		
                 return sb.toString();
@@ -260,7 +266,7 @@ public class Tournament implements Serializable {
         // [TODO: Ryan Arnold]
         // [NEEDS TESTING]
         // Save current Tournament data to a ser file.
-        // @return: True if Tournament was written serialized to a file,
+        // @return: True if Tournament was serialized to a file,
         // False otherwise.
         public boolean save(File path) {
             String filename = tournamentName + ".ser";
