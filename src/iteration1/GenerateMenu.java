@@ -18,6 +18,7 @@ public class GenerateMenu {
 
 	private JFrame frame;
 	private JTextField textField;
+	private File selectedFile;
 
 	/**
 	 * Launch the application.
@@ -78,7 +79,7 @@ public class GenerateMenu {
 				
 				// Check if user selects a file
 				if (result == JFileChooser.APPROVE_OPTION) {
-				    File selectedFile = fileChooser.getSelectedFile();
+				    selectedFile = fileChooser.getSelectedFile();
 				    textField.setText(selectedFile.getAbsolutePath());
 				    // TODO: Send to next menu
 				} else {
@@ -90,6 +91,15 @@ public class GenerateMenu {
 		frame.getContentPane().add(btnFind);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (selectedFile.length() != 0) {
+					MapAndListGUI mapgui = new MapAndListGUI(selectedFile);
+				} else {
+					JOptionPane.showMessageDialog(null, "You didn't select a file.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnOk.setBounds(160, 213, 117, 25);
 		frame.getContentPane().add(btnOk);
 	}

@@ -59,6 +59,7 @@ public class MainMenu {
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TournamentMenu newwindow = new TournamentMenu();
+				
 				newwindow.TournamentScreen();
 			}
 		});

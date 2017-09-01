@@ -27,7 +27,10 @@ public class MapAndListGUI extends JFrame {
     
     // TODO Ryan
     // Constructor
-    public MapAndListGUI() {
+    public MapAndListGUI(File selectedFile) {
+    	super();
+        setVisible(true);
+    	
         // construct window
         setTitle("Tournament Meeting Generator");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
