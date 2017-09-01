@@ -67,7 +67,7 @@ public class TournamentMenu {
 				
 				// Allows only a certain extension to be chosen.
 		        fileChooser.setAcceptAllFileFilterUsed(false);
-		        FileNameExtensionFilter filter = new FileNameExtensionFilter("Comma Separated Values", "csv");
+		        FileNameExtensionFilter filter = new FileNameExtensionFilter("Serialized File", "ser");
 		        fileChooser.addChoosableFileFilter(filter);
 		        fileChooser.showOpenDialog(null);
 		        
