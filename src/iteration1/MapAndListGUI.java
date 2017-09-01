@@ -6,6 +6,8 @@ import java.io.File;
 import javax.swing.*;
 
 public class MapAndListGUI extends JFrame {
+    private Tournament currentTournament;
+
     // default file output path
     private final File OUT_PATH = new File("output/");
 
@@ -31,6 +33,9 @@ public class MapAndListGUI extends JFrame {
     	super();
         setVisible(true);
     	
+        //Generate Tournament
+        generateTournament(selectedFile);
+        
         // construct window
         setTitle("Tournament Meeting Generator");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -68,10 +73,29 @@ public class MapAndListGUI extends JFrame {
         add(listPanel);
     }
     
+    // TODO Ryan
+    public boolean generateTournament(File selectedFile) {
+        // discern file Enrollment(.csv) or Saved Tournament(.ser)
+        // if .csv call ReadSchoolFile()
+        // if .ser call LoadSavedTournament()
+        
+        return true;
+    }
+    
+    // TODO Ryan
+    private boolean loadSavedTournament(File saveFile) {
+        Tournament savedTourney = null; // [TEMP]
+
+        // deserialize Tourney
+        
+        currentTournament = savedTourney;
+        return true;
+    }
+    
     // TODO Ryan 
     public class GenerateListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // [do the thing]
+            // rehash main menu
         }
     }
     
@@ -90,7 +114,7 @@ public class MapAndListGUI extends JFrame {
     // TODO Ryan 
     public class LoadListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // [do the thing]
+            // rehash main menu
         }
     }
     
