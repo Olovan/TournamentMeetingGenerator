@@ -17,7 +17,7 @@ public class Tournament implements Serializable {
 	Match[]        sectionals;
 	Match[]        regionals;
 	Match[]        semiState;
-	Match          finals;
+	Match[]          finals; //Only contains 1 match but is an array type for consistency
 
 	//TODO: Micah
 	public Tournament(String name, School[] participants, School[] hosts, Configuration config) {
@@ -29,10 +29,10 @@ public class Tournament implements Serializable {
 		School[] semiStateHosts = getHostsForMeet(3, hosts);
 		School[] stateHost = getHostsForMeet(4, hosts);
 
-		sectionals = assignTeams(sectionalHosts, participants, config.numberOfSectionalHosts);
-		regionals = assignTeams(regionalHosts, sectionalHosts, config.numberOfRegionalHosts);
-		semiState = assignTeams(semiStateHosts, regionalHosts, config.numberOfSemiStateHosts);
-		finals = assignTeams(stateHost, semiStateHosts, 1);
+		sectionals = assignTeamsToHosts(sectionalHosts, participants, config.numberOfSectionalHosts);
+		regionals = assignTeamsToHosts(regionalHosts, sectionalHosts, config.numberOfRegionalHosts);
+		semiState = assignTeamsToHosts(semiStateHosts, regionalHosts, config.numberOfSemiStateHosts);
+		finals = assignTeamsToHosts(stateHost, semiStateHosts, 1);
 
 		balanceHosts(sectionals, config.minTeamsPerHost[0]);
 		balanceHosts(regionals, config.minTeamsPerHost[1]);
