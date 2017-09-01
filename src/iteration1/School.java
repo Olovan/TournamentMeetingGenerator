@@ -4,7 +4,7 @@ import java.lang.Math;
 
 public class School {
 
-    private String schoolName;
+    public String schoolName;
     public int enrollment;
     public int participation;
     public int hostSectionals;

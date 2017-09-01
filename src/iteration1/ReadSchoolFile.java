@@ -21,6 +21,7 @@ public class ReadSchoolFile {
 		
 			// Read the first line from csv file
 			String line = fileBR.readLine();
+            line = fileBR.readLine(); //Skip first line of CSV file because it has column names
 			
 			// Reads a single line until there are none left to read
 			while (line != null) {
