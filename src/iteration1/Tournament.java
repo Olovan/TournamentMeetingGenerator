@@ -211,19 +211,17 @@ public class Tournament implements Serializable {
                 return sb.toString();
 	}
 
-        // Save tournament schedule, in tabular form, to a text file specified by the user.
+        // [TODO: Ryan Arnold]
+        // [NEEDS TESTING]
+        // Save tournament schedule, in tabular form, to a text file.
         // @return: True if text file was successfully created and written to,
         //          False otherwise.
-	public boolean outputToFile(String filename, String path) {
-		// check parameters and set defaults if required
+	public boolean outputToFile(File path) {
+		String filename = tournamentName + ".txt";
+                
+                // check parameter
                 if (path == null){
                     return false;
-                }
-                else if (filename == null) {
-                    filename = tournamentName + ".txt";
-                }
-                else {
-                    filename = filename + ".txt";
                 }
                 
                 // prepare for writing
@@ -261,28 +259,24 @@ public class Tournament implements Serializable {
         
         // [TODO: Ryan Arnold]
         // [NEEDS TESTING]
-        // Save current Tournament data to a user specied text file.
+        // Save current Tournament data to a ser file.
         // @return: True if Tournament was written serialized to a file,
         // False otherwise.
-        public boolean save(String filename, String path) {
-            // check parameters and set defaults if required
+        public boolean save(File path) {
+            String filename = tournamentName + ".ser";
+
+            // check parameter
             if (path == null){
                 return false;
             }
-            else if (filename == null) {
-                filename = tournamentName + ".txt";
-                }
-            else {
-                filename = filename + ".txt";
-            }
-            
+                        
             // prepare for writing
             FileOutputStream fOut;
             ObjectOutputStream oOut;
             
             try {
                 // write Tournamnet to file
-                fOut = new FileOutputStream(new File(filename));
+                fOut = new FileOutputStream(new File(path, filename));
                 oOut = new ObjectOutputStream(fOut);
                 oOut.writeObject(this);
                 

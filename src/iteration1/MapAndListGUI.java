@@ -2,9 +2,14 @@ package iteration1;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.nio.file.Files;
 import javax.swing.*;
 
 public class MapAndListGUI extends JFrame {
+    // default file output path
+    private final File OUT_PATH = new File("output/");
+
     // default window size
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 1000;
@@ -71,6 +76,11 @@ public class MapAndListGUI extends JFrame {
     // TODO Ryan 
     public class SaveListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            // Make an output file if needed
+            if (!OUT_PATH.exists()) {
+                OUT_PATH.mkdir();
+            }
+            
             // [do the thing]
         }
     }
