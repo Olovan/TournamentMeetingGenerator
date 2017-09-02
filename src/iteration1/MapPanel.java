@@ -27,10 +27,13 @@ public class MapPanel extends JPanel {
 	public void displayMatch(Match match) {
 		StringBuilder builder = new StringBuilder();
 
-		builder.append("&markers=color:blue%7Clabel:H%7C" + match.host.latitude + "," + match.host.longitude);
-		builder.append("&markers=color:red%7Csize:small");
+		String hostMarkerColor = (match.schools.contains(match.host) ? "red" : "blue"); // Host Icon is red if it's one of the competing schools and blue if it's not participating in the tournament
+
+		builder.append("&markers=color:" + hostMarkerColor + "%7Clabel:H%7C" + match.host.latitude + "," + match.host.longitude);
 		for(School school : match.schools) {
+			builder.append("&markers=color:red%7Csize:tiny");
 			builder.append("%7C" + school.latitude + "," + school.longitude);
+			builder.append("&path=color:red%7Cweight:2%7C" + school.latitude + "," + school.longitude + "%7C" + match.host.latitude + "," + match.host.longitude);
 		}
 
 		loadImageUrl(path + builder + "&key=" + key);
