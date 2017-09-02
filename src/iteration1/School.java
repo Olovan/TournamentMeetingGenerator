@@ -10,8 +10,8 @@ public class School {
     public int hostSectionals;
     public int hostRegionals;
     public int hostSemiState;
-    private double longitude;
-    private double latitude;
+    public double longitude;
+    public double latitude;
 
     public School (String name, int total, int par, int sec, int reg, int sem, double lon, double lat) {
         this.schoolName = name;

@@ -11,13 +11,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Tournament implements Serializable {
-    String         tournamentName;
-    Configuration  config;
-    School[]       participants;
-    Match[]        sectionals;
-    Match[]        regionals;
-    Match[]        semiState;
-    Match[]        finals; //Only contains 1 match but is an array type for consistency
+    public String         tournamentName;
+    public Configuration  config;
+    public School[]       participants;
+    public Match[]        sectionals;
+    public Match[]        regionals;
+    public Match[]        semiState;
+    public Match[]        finals; //Only contains 1 match but is an array type for consistency
 
     //TODO: Micah
     public Tournament(String name, School[] participants, School[] hosts, Configuration config) {

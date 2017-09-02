@@ -2,11 +2,12 @@ package iteration1;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 
 public class Main {
     static final String CONFIG_FILE = "etc/config.txt";
 
-   public static void main(String[] args) {
+   public static void main(String[] args) throws Exception {
        if(args.length < 1) {
            System.out.println("Must give filename to load Schools from");
            return;
@@ -37,6 +38,25 @@ public class Main {
 
        Tournament t = new Tournament("Boys Test Tournament", participantsArray, hostsArray, config);
 
-       System.out.println(t);
+	   MapPanel map = new MapPanel();
+	   JFrame testFrame = new JFrame();
+	   testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   testFrame.getContentPane().add(map);
+	   testFrame.pack();
+	   testFrame.setVisible(true);
+
+	   for(int i = 0; i < config.numberOfSectionalHosts; i++) {
+		   map.displayMatch(t.sectionals[i]);
+		   Thread.sleep(2000);
+	   }
+	   for(int i = 0; i < config.numberOfRegionalHosts; i++) {
+		   map.displayMatch(t.regionals[i]);
+		   Thread.sleep(2000);
+	   }
+	   for(int i = 0; i < config.numberOfSemiStateHosts; i++) {
+		   map.displayMatch(t.semiState[i]);
+		   Thread.sleep(2000);
+	   }
+	   map.displayMatch(t.finals[0]);
    } 
 }
