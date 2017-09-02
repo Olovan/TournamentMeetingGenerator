@@ -91,6 +91,8 @@ public class MapAndListGUI extends JFrame {
     // TODO Ryan or Quentin
     public boolean generateTournament(File selectedFile) {
         // discern file Enrollment(.csv) or Saved Tournament(.ser)
+        
+        //THIS IS GOING TO GET MESSY!
         // if .csv call ReadSchoolFile(selectedFile.getName()) then current Tournament = generated Tournament
         // if .ser call LoadSavedTournament(selectedFile)
         return true;
