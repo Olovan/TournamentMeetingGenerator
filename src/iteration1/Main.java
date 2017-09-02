@@ -3,6 +3,8 @@ package iteration1;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class Main {
     static final String CONFIG_FILE = "etc/config.txt";
@@ -41,7 +43,8 @@ public class Main {
 	   MapPanel map = new MapPanel();
 	   JFrame testFrame = new JFrame();
 	   testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	   testFrame.getContentPane().add(map);
+	   testFrame.setContentPane(new JPanel(new BorderLayout()));
+	   testFrame.getContentPane().add(map, BorderLayout.CENTER);
 	   testFrame.pack();
 	   testFrame.setVisible(true);
 
