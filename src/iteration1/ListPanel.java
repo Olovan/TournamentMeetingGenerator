@@ -4,7 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class ListPanel extends JPanel{
-    private FlowLayout layout = new FlowLayout(FlowLayout.LEADING);
+    private FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
+    
     
     private JPanel sectionalsPanel;
     private JPanel regionalsPanel;
@@ -12,16 +13,17 @@ public class ListPanel extends JPanel{
     private JPanel finalsPanel;
 
     // TODO Ryan
+    // [TEST]
     // Constructor
-    public ListPanel() {
+    public ListPanel(Tournament currentTournament, MapPanel map) {
         // formating
         setLayout(layout);
         
         // Create panels containing meet schedules
-        sectionalsPanel = new MeetPanel("Sectionals");
-        regionalsPanel = new MeetPanel("Regionals");
-        semiStatePanel = new MeetPanel("Semi-State");
-        finalsPanel = new MeetPanel("State");
+        sectionalsPanel = new MeetPanel("Sectionals", currentTournament.sectionals, map);
+        regionalsPanel = new MeetPanel("Regionals", currentTournament.regionals, map);
+        semiStatePanel = new MeetPanel("Semi-State", currentTournament.semiState, map);
+        finalsPanel = new MeetPanel("State", currentTournament.finals, map);
         
         // add meet panels to frame
         add(sectionalsPanel);

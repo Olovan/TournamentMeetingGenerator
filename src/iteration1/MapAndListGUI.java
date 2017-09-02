@@ -8,13 +8,14 @@ import javax.swing.*;
 public class MapAndListGUI extends JFrame {
     // object the GUI is displaying
     protected Tournament currentTournament;
-
+    
     // default file output path
     private final File OUT_PATH = new File("output/");
 
-    // default window size
+    // default window size and formating
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 1000;
+    private GridLayout layout = new GridLayout(1,2);
     
     // menu bar and elements
     private JMenuBar menuBar;
@@ -37,14 +38,14 @@ public class MapAndListGUI extends JFrame {
     	super();
         setVisible(true);
     	
-        //Generate Tournament
+        // Generate Tournament
         generateTournament(selectedFile);
         
         // construct window
         setTitle("Tournament Meeting Generator");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(1,2));
+        setLayout(layout);
         
         // create file menu
         menuBar = new JMenuBar();
@@ -82,17 +83,16 @@ public class MapAndListGUI extends JFrame {
         
         // create output displays then add to frame
         mapPanel = new MapPanel();
-        listPanel = new ListPanel();
+        //listPanel = new ListPanel(currentTournament, mapPanel); Will crash until generateMenu() has been completed
         add(mapPanel);
-        add(listPanel);
+        //add(listPanel); Will crash until generateMenu() has been completed
     }
     
     // TODO Ryan or Quentin
     public boolean generateTournament(File selectedFile) {
         // discern file Enrollment(.csv) or Saved Tournament(.ser)
-        // if .csv call ReadSchoolFile()
-        // if .ser call LoadSavedTournament()
-        
+        // if .csv call ReadSchoolFile(selectedFile.getName()) then current Tournament = generated Tournament
+        // if .ser call LoadSavedTournament(selectedFile)
         return true;
     }
     
@@ -103,19 +103,30 @@ public class MapAndListGUI extends JFrame {
         // deserialize Tourney
         
         currentTournament = savedTourney;
+        
+        // updateListPanel()
+        
+        return true;
+    }
+    
+    // TODO Ryan or Quentin
+    private boolean refreshListPanel() {
+        // refresh listPanel with updated currentTournament information
+        
         return true;
     }
     
     // TODO Ryan or Quentin
     public class GenerateListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // new GenerateMenu()
+            // get enrollement file (.csv)
+            // pass file to generateTournament
         }
     }
     
     // TODO Ryan 
+    // [TEST]
     // Output torunament table to txt and serilize current Tournament for later loading.
-    // [TEST!!!]
     public class SaveListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             // Successful saving of tournament schedule or meet data.
@@ -182,7 +193,8 @@ public class MapAndListGUI extends JFrame {
     // TODO Ryan or Quentin
     public class LoadListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // new TournamentMenu()
+            // get Tournament file (.ser)
+            // pass file to loadSavedTournament()
         }
     }
     
