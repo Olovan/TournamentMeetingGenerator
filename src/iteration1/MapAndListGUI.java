@@ -3,19 +3,23 @@ package iteration1;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.*;
+import java.util.List;
 
-public class MapAndListGUI extends JFrame {
-    // object the GUI is displaying
-    protected Tournament currentTournament;
-    
-    // default file output path
+public class MapAndListGUI extends JFrame {   
+    // defaults settings
+    private final String CONFIG_FILE = "etc/config.txt";
+    private final String TOURNAMENT_NAME = "IHSAA Cross Country Running Tournament v.0";
     private final File OUT_PATH = new File("output/");
-
+    
     // default window size and formating
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 1000;
     private GridLayout layout = new GridLayout(1,2);
+    
+    // object the GUI is displaying
+    protected Tournament currentTournament;
     
     // menu bar and elements
     private JMenuBar menuBar;
@@ -29,7 +33,7 @@ public class MapAndListGUI extends JFrame {
     private JMenuItem changeParticipantItem;
     
     // output displays
-    private JPanel mapPanel;
+    private MapPanel mapPanel;
     private JPanel listPanel;
     
     // TODO Ryan or Quentin
@@ -83,16 +87,50 @@ public class MapAndListGUI extends JFrame {
         
         // create output displays then add to frame
         mapPanel = new MapPanel();
-        //listPanel = new ListPanel(currentTournament, mapPanel); Will crash until generateMenu() has been completed
+        listPanel = new ListPanel(currentTournament, mapPanel); 
         add(mapPanel);
-        //add(listPanel); Will crash until generateMenu() has been completed
+        add(listPanel); 
     }
     
     // TODO Ryan or Quentin
     public boolean generateTournament(File selectedFile) {
         // discern file Enrollment(.csv) or Saved Tournament(.ser)
-        // if .csv call ReadSchoolFile(selectedFile.getName()) then current Tournament = generated Tournament
-        // if .ser call LoadSavedTournament(selectedFile)
+        String fileName = selectedFile.getName();
+        if (fileName.contains(".csv")) {
+            // read schools from enrollement file and set config
+            List<School> allSchools = ReadSchoolFile.GetSchoolsFromFile(selectedFile.getAbsolutePath());
+            Configuration config = new Configuration(CONFIG_FILE);
+            
+            // Create list of hosts and participants from allSchools
+            List<School> hosts = new ArrayList<School>();
+            List<School> participants = new ArrayList<School>();
+            for(School school : allSchools) {
+                if(school.participation != 0)
+                    participants.add(school);
+
+                if(school.hostSectionals != 0 || school.hostRegionals != 0 || school.hostSemiState != 0)
+                    hosts.add(school);
+
+                if(school.schoolName.contentEquals("Terre Haute LaVern Gibson"))
+                    hosts.add(school);
+            }
+            
+            // convert lists into arrays
+            School[] hostsArray = new School[hosts.size()];
+            School[] participantsArray = new School[participants.size()];
+            hosts.toArray(hostsArray);
+            participants.toArray(participantsArray);
+            
+            //create Tournament
+            currentTournament = new Tournament(TOURNAMENT_NAME,participantsArray, hostsArray, config);
+        }
+        else if (fileName.contains(".ser")) {
+            loadSavedTournament(selectedFile);
+        }
+        else {
+            System.exit(0);
+        }
+        
         return true;
     }
     
