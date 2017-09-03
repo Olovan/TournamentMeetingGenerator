@@ -98,15 +98,7 @@ public class MapAndListGUI extends JFrame {
         String fileName = selectedFile.getName();
         if (fileName.contains(".csv")) {
             // read schools from enrollement file and set config
-            
-            
-            
-            // NoSuchFileException: Boys_Enrollment.csv
-            List<School> allSchools = ReadSchoolFile.GetSchoolsFromFile(fileName);
-            // Any ideas???
-            
-            
-            
+            List<School> allSchools = ReadSchoolFile.GetSchoolsFromFile(selectedFile.getAbsolutePath());
             Configuration config = new Configuration(CONFIG_FILE);
             
             // Create list of hosts and participants from allSchools
