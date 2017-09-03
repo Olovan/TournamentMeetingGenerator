@@ -224,8 +224,6 @@ public class Tournament implements Serializable {
         return sb.toString();
     }
 
-    // [TODO: Ryan Arnold]
-    // [NEEDS TESTING]
     // Save tournament schedule, in tabular form, to a text file.
     // @return: True if text file was successfully created and written to,
     //          False otherwise.
@@ -250,6 +248,7 @@ public class Tournament implements Serializable {
             bw.write(output);
         }
         catch (IOException e) {
+            System.out.println(e.toString());
             return false;
         }
         finally {
@@ -263,6 +262,7 @@ public class Tournament implements Serializable {
                 }
             }
             catch (IOException e) {
+                System.out.println(e.toString());
                 return false;
             }
         }
@@ -270,8 +270,6 @@ public class Tournament implements Serializable {
         return true;
     }
 
-    // [TODO: Ryan Arnold]
-    // [NEEDS TESTING]
     // Save current Tournament data to a ser file.
     // @return: True if Tournament was serialized to a file,
     // False otherwise.
@@ -298,6 +296,7 @@ public class Tournament implements Serializable {
             oOut.close();
         }
         catch (IOException e) {
+            System.out.println(e.toString());
             return false;
         }
 

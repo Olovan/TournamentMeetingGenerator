@@ -1,8 +1,9 @@
 package iteration1;
 
+import java.io.Serializable;
 import java.lang.Math;
 
-public class School {
+public class School implements Serializable {
 
     public String schoolName;
     public int enrollment;

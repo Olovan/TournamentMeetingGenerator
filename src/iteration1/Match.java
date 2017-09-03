@@ -1,9 +1,10 @@
 package iteration1;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 //This class represents a single tournament match
-public class Match {
+public class Match implements Serializable{
 	public School host;
 	public ArrayList<School> schools = new ArrayList<>(); //Schools competing in the match
 	

@@ -2,10 +2,11 @@ package iteration1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.Serializable;
 
 //Contains options for easy passing as a function argument
 //Initialized with Config.txt file
-public class Configuration {
+public class Configuration implements Serializable{
 	public int numberOfSectionalHosts = 32;
 	public int numberOfRegionalHosts = 16;
 	public int numberOfSemiStateHosts = 4;

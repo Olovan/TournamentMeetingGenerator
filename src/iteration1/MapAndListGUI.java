@@ -2,10 +2,10 @@ package iteration1;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
-import javax.swing.*;
 import java.util.List;
+import javax.swing.*;
 
 public class MapAndListGUI extends JFrame {   
     // defaults settings
@@ -92,7 +92,7 @@ public class MapAndListGUI extends JFrame {
         add(listPanel); 
     }
     
-    // TODO Ryan or Quentin
+    // [DESC]
     public boolean generateTournament(File selectedFile) {
         // discern file Enrollment(.csv) or Saved Tournament(.ser)
         String fileName = selectedFile.getName();
@@ -131,20 +131,53 @@ public class MapAndListGUI extends JFrame {
             System.exit(0);
         }
         
+        // send confirmation
+        JOptionPane.showMessageDialog(null,
+                                      "Successfully generated tournament.",
+                                      "Output Message",
+                                      JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
     
-    // TODO Ryan or Quentin
+    // Load previously generated/modifies Tournament and display to GUI.
+    // @return: True if Tournament was successfully loaded to GUI,
+    // False otherwise.
     private boolean loadSavedTournament(File saveFile) {
-        Tournament savedTourney = null; // [TEMP]
+        Tournament savedTourney;
 
         // deserialize Tourney
+        try {
+            // read object from file
+            FileInputStream file = new FileInputStream(saveFile.getAbsoluteFile());
+            ObjectInputStream in = new ObjectInputStream(file);
+            
+            // deserialize Tournament
+            savedTourney = (Tournament)in.readObject();
+            
+            // close file
+            in.close();
+            file.close();
+            
+            // update GUI
+            currentTournament = savedTourney;
+            refreshListPanel();
         
-        currentTournament = savedTourney;
-        
-        // updateListPanel()
-        
-        return true;
+            //send confirmation
+            JOptionPane.showMessageDialog(null,
+                                          "Successfully loaded tournament.",
+                                          "Output Message",
+                                          JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }
+        catch (IOException | ClassNotFoundException ex){
+            // warning message
+            JOptionPane.showMessageDialog(null, 
+                                              "Failed to load tournament data.",
+                                              "Output Warning",
+                                              JOptionPane.WARNING_MESSAGE);
+            System.out.println(ex.toString());
+            return false;
+        }
     }
     
     // TODO Ryan or Quentin
@@ -162,8 +195,6 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // TODO Ryan 
-    // [TEST]
     // Output torunament table to txt and serilize current Tournament for later loading.
     public class SaveListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -205,7 +236,7 @@ public class MapAndListGUI extends JFrame {
             }
             else {
                 JOptionPane.showMessageDialog(null,
-                                              "Successfully saved current tournament schedule as a table",
+                                              "Successfully saved current tournament schedule as a table.",
                                               "Output Message",
                                               JOptionPane.INFORMATION_MESSAGE);
             }
