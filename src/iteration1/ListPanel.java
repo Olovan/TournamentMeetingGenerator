@@ -6,14 +6,11 @@ import javax.swing.*;
 public class ListPanel extends JPanel{
     private FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
     
-    
     private JPanel sectionalsPanel;
     private JPanel regionalsPanel;
     private JPanel semiStatePanel;
     private JPanel finalsPanel;
 
-    // TODO Ryan
-    // [TEST]
     // Constructor
     public ListPanel(Tournament currentTournament, MapPanel map) {
         // formating

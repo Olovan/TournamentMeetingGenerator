@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class MeetPanel extends JPanel{
     private BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
-    private Dimension pnlSize = new Dimension(117,1000);
+    private Dimension pnlSize = new Dimension(110,1000);
     private Font font1 = new Font("Arial", Font.BOLD, 14);
     private Font font2 = new Font("Arial", Font.PLAIN, 14);
     
@@ -16,7 +16,6 @@ public class MeetPanel extends JPanel{
     private JButton allMeetsBtn;
     private ArrayList<String> hostArr;
     
-    // TODO Ryan
     // Constructor
     public MeetPanel(String meetCategory, Match[] listOfMeets, MapPanel map) {
         // formating
@@ -33,6 +32,7 @@ public class MeetPanel extends JPanel{
         allMeetsBtn = new JButton(meetCategory);
         allMeetsBtn.addActionListener(new AllMeetsBtnListener());
         allMeetsBtn.setFont(font1);
+        allMeetsBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(allMeetsBtn);
         
         // construct meet buttons, catalog name in hostArr, and add to frame
@@ -44,16 +44,17 @@ public class MeetPanel extends JPanel{
             meetBtn = new JButton(hostName);
             meetBtn.addActionListener(new MeetBtnListener());
             meetBtn.setFont(font2);
+            meetBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
             
             hostArr.add(hostName);
             add(meetBtn);
         }
     }
     
-    // TODO Ryan
+    // Send all matches for simultaneous mapPanel display
     public class AllMeetsBtnListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            // display all meets at once
+            map.displayMatch(meetsArr);
         }
     }
     

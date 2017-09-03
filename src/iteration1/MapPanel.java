@@ -50,6 +50,10 @@ public class MapPanel extends JPanel {
 		loadImageUrl(path + builder + "&key=" + key);
 	}
 
+        public void displayMatch(Match[] matches) {
+            // simultaneously display all meets of a given category
+        }
+        
 	private void loadImageUrl(String path) {
 		try {
 			url = new URL(path);
