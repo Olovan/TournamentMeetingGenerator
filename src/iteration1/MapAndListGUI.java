@@ -37,7 +37,6 @@ public class MapAndListGUI extends JFrame {
     private MapPanel mapPanel;
     private JPanel listPanel;
     
-    // TODO Ryan or Quentin
     // Constructor
     public MapAndListGUI(File selectedFile) {
     	super();
@@ -87,16 +86,25 @@ public class MapAndListGUI extends JFrame {
         setJMenuBar(menuBar);
     }
     
-    // [TEST]
+    // Creates map and button display.
     private void createPanels() {
+        // remove outdated components if needed
+        if (mapPanel != null) {
+            remove(mapPanel);
+        }
         if (listPanel != null) {
             remove(listPanel);
         }
+        
         mapPanel = new MapPanel();
         listPanel = new ListPanel(currentTournament, mapPanel);
         
         add(mapPanel);
         add(listPanel);
+        
+        // refresh GUI
+        this.repaint();
+        this.revalidate();
     }
 
     // Generate+Display a new Tournament based on a given enrollment file and configuration settings.
@@ -190,7 +198,8 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // [TEST]
+    // Select a file to input from.
+    // @return: Chosen file for reading.
     private File chooseFile(String type, String ext) {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(type, ext);
         JFileChooser fileChooser = new JFileChooser();
@@ -211,7 +220,7 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // [TEST]
+    // Create a new Tournament and display to GUI.
     public class GenerateListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             File enrollmentFile = chooseFile("Comma Separated Values", "csv");
@@ -285,7 +294,7 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // [TEST]
+    // Load previously saved Tournament and display to GUI. 
     public class LoadListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             File tourneyFile = chooseFile("Serialized File", "ser");
