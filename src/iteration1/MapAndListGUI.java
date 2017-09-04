@@ -319,11 +319,13 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // TODO Ryan or Quentin
+    // TODO QUENTIN
     public class ChangeParticipantListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             // have user modify the competitors in each of the meets from a new window
             // make sure to save modficications to the current tournament object!
+			AddParticipant newwindow = new AddParticipant();
+			newwindow.AddParticipantScreen();
         }
     }
 }

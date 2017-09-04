@@ -78,10 +78,10 @@ public class TournamentMenu {
 				if (result == JFileChooser.APPROVE_OPTION) {
 				    selectedFile = fileChooser.getSelectedFile();
 				    textField.setText(selectedFile.getAbsolutePath());
-				    // TODO: Send to next menu
 				} else {
 					JOptionPane.showMessageDialog(null, "You didn't select a file.", "Warning", JOptionPane.INFORMATION_MESSAGE);
 				}
+				
 			}
 		});
 		btnFind.setBounds(282, 152, 117, 25);
