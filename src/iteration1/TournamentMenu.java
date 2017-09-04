@@ -104,6 +104,10 @@ public class TournamentMenu {
 		});
 		btnOk.setBounds(160, 213, 117, 25);
 		frame.getContentPane().add(btnOk);
+		
+		JLabel lblPathWillDisplay = new JLabel("Path will display here:");
+		lblPathWillDisplay.setBounds(39, 133, 231, 15);
+		frame.getContentPane().add(lblPathWillDisplay);
 	}
 
 }

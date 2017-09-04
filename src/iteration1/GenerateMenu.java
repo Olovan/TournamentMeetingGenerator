@@ -102,5 +102,9 @@ public class GenerateMenu {
 		});
 		btnOk.setBounds(160, 213, 117, 25);
 		frame.getContentPane().add(btnOk);
+		
+		JLabel lblPathWillDisplay = new JLabel("Path will display here:");
+		lblPathWillDisplay.setBounds(37, 133, 233, 15);
+		frame.getContentPane().add(lblPathWillDisplay);
 	}
 }
