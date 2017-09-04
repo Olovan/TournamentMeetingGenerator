@@ -1,5 +1,6 @@
 package iteration1;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -10,6 +11,9 @@ public class Main {
     static final String CONFIG_FILE = "etc/config.txt";
 
    public static void main(String[] args) throws Exception {
+	   MapAndListGUI gui = new MapAndListGUI(new File("etc/Boys_Enrollment.csv"));
+
+	   /*
        if(args.length < 1) {
            System.out.println("Must give filename to load Schools from");
            return;
@@ -61,5 +65,6 @@ public class Main {
 		   Thread.sleep(2000);
 	   }
 	   map.displayMatch(t.finals[0]);
+	   */
    } 
 }

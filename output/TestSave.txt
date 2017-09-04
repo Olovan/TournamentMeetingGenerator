@@ -1,0 +1,730 @@
+TestSave
+
+			SECTIONALS
+Sectional #1
+Hosted by Ben Davis High School
+=========================================================
+Ben Davis High School
+Avon High School
+Brownsburg High School
+Southport High School
+Indpls. Arsenal Technical High School
+Decatur Central High School
+Plainfield High School
+Mooresville High School
+Herron High School
+Danville Community High Sch
+Indpls. Crispus Attucks Medical Magnet
+Indpls. Emmerich Manual High School
+Indpls. Northwest High School
+Tri-West Senior High School
+Indpls. Cardinal Ritter HS
+Monrovia High School
+Speedway Senior High School
+Indpls. George Washington Community
+Covenant Christian (Indpls.) HS
+Indpls. Metropolitan High Sch
+Providence Cristo Rey HS
+Christel House Academy
+Bethesda Christian School
+Central Christian Academy
+=========================================================
+
+Sectional #2
+Hosted by Noblesville High School
+=========================================================
+Fishers High School
+Hamilton Southeastern HS
+Noblesville High School
+Westfield High School
+Guerin Catholic HS
+Hamilton Heights High School
+Tipton High School
+Elwood Community High School
+Sheridan High School
+Clinton Central Junior-Senior HS
+Tri Central Middle-High School
+=========================================================
+
+Sectional #3
+Hosted by Crown Point High School
+=========================================================
+Crown Point High School
+Merrillville High Sch
+Lowell Senior High School
+Hanover Central High Sch
+Boone Grove High School
+Andrean High School
+Hebron High School
+Kouts Middle/High School
+=========================================================
+
+Sectional #4
+Hosted by F.W. Northrop High School
+=========================================================
+Homestead Senior High School
+Carroll (F.W.) High School
+F.W. Northrop High School
+F.W. Snider High School
+F.W. North Side High School
+F.W. South Side High School
+DeKalb High School
+F.W. Bishop Dwenger HS
+Columbia City High School
+Leo Junior/Senior High School
+F.W. Concordia Lutheran HS
+F.W. Bishop Luers HS
+Garrett High School
+Woodlan Jr/Sr High School
+Eastside Junior-Senior High Sch
+F.W. Canterbury School
+Churubusco Jr-Sr High School
+F.W. Blackhawk Christian Jr-Sr HS
+Lakewood Park Christian Sch
+Hamilton Community High Sch
+Smith Academy for Excellence
+=========================================================
+
+Sectional #5
+Hosted by Chesterton Senior High School
+=========================================================
+Portage High School
+Valparaiso High School
+Chesterton Senior High School
+LaPorte High School
+Michigan City High Sch
+Hobart High School
+Wheeler High School
+Lake Station Edison Jr-Sr HS
+South Central (Union Mills) Jr-Sr HS
+Westville High School
+Marquette Catholic HS
+Washington Twp Middle/High School
+Morgan Township Middle/High School
+LaCrosse Elem & High School
+=========================================================
+
+Sectional #6
+Hosted by Harrison (W.Laf.) High Sch
+=========================================================
+Lafayette Jefferson High School
+McCutcheon High School
+Frankfort Senior High School
+Twin Lakes Senior High School
+North Montgomery High School
+Delphi Community High School
+Clinton Prairie Jr-Sr HS
+Rossville Senior High School
+Lafayette Central Catholic Jr-Sr HS
+Faith Christian School
+=========================================================
+
+Sectional #7
+Hosted by Terre Haute North Vigo High Sch
+=========================================================
+Terre Haute North Vigo High Sch
+Terre Haute South Vigo High Sch
+Northview High School
+Sullivan High School
+West Vigo High School
+South Vermillion High School
+Riverton Parke Jr-Sr High School
+North Central (Farmersburg) HS
+Clay City Jr-Sr High School
+North Vermillion High School
+Rockville Jr-Sr High School
+Turkey Run High School
+=========================================================
+
+Sectional #8
+Hosted by Elkhart Central High School
+=========================================================
+Goshen High School
+Concord Community High School
+Elkhart Central High School
+Elkhart Memorial High School
+Northridge High School
+NorthWood High School
+Jimtown High School
+Elkhart Christian Academy
+Bethany Christian School
+=========================================================
+
+Sectional #9
+Hosted by Bedford-North Lawrence High School
+=========================================================
+Bedford-North Lawrence High School
+Brownstown Central High Sch
+Mitchell High School
+Eastern Greene High School
+White River Valley Jr/Sr High Sch
+Shakamak Jr-Sr High Sch
+Bloomfield Jr-Sr High School
+Orleans Jr-Sr High Sch
+Medora Jr & Sr High School
+=========================================================
+
+Sectional #10
+Hosted by Franklin Community High Sch
+=========================================================
+Center Grove High School
+Perry Meridian High School
+Whiteland Community High Sch
+Franklin Community High Sch
+Greenwood Community High Sch
+Indian Creek Sr High Sch
+South Decatur Jr-Sr High Sch
+Edinburgh Community High Sch
+Hauser Jr-Sr High School
+Southwestern (Shelby) High School
+Greenwood Christian Academy
+=========================================================
+
+Sectional #11
+Hosted by Pendleton Heights High School
+=========================================================
+Anderson High School
+Pendleton Heights High School
+Mt. Vernon (Fortville) High School
+New Castle Chrysler High Sch
+Mt. Vernon High School
+Frankton Jr-Sr High Sch
+Lapel Sr High School
+Shenandoah High School
+Eastern Hancock High Sch
+Knightstown High School
+Daleville Jr/Sr High School
+Anderson Preparatory Academy
+Liberty Christian School
+=========================================================
+
+Sectional #12
+Hosted by S.B. Riley High School
+=========================================================
+Penn High School
+S.B. Adams High School
+Mishawaka High School
+S.B. Riley High School
+S.B. Clay High School
+New Prairie High School
+S.B. Washington High School
+S.B. Saint Joseph's HS
+Mishawaka Marian HS
+Bremen Senior High School
+LaVille Jr-Sr High School
+S.B. Career Academy
+=========================================================
+
+Sectional #13
+Hosted by Logansport Comm High Sch
+=========================================================
+Kokomo High School
+Logansport Comm High Sch
+Western High School
+Maconaquah High School
+Peru High School
+Northwestern Sr High Sch
+Cass Jr-Sr High School
+Carroll (Flora) Jr-Sr High Sch
+North Miami Middle/High School
+Pioneer Jr-Sr High School
+Caston Jr-Sr High Sch
+=========================================================
+
+Sectional #14
+Hosted by New Palestine High School
+=========================================================
+Warren Central High School
+Franklin Central High School
+Greenfield-Central High Sch
+Evans. Central High School
+Roncalli High School
+Shelbyville Sr High Sch
+New Palestine High School
+Beech Grove Sr High School
+Triton Central High School
+Indpls. Howe Comm High School
+Irvington Preparatory Academy
+Indpls. Lighthouse Charter School
+Indpls. Lutheran High School
+Morristown Jr-Sr High School
+Waldron Jr-Sr High School
+=========================================================
+
+Sectional #15
+Hosted by Connersville Sr High School
+=========================================================
+Richmond High School
+Connersville Sr High School
+Franklin County High
+Greensburg Community High Sch
+Rushville Consolidated High Sch
+Centerville Sr High School
+Union County High School
+Northeastern High School
+Hagerstown Jr-Sr High School
+Cambridge City Lincoln Sr High Sch
+North Decatur Jr-Sr High Sch
+Tri Junior-Senior High School
+Oldenburg Academy
+Seton Catholic High School
+=========================================================
+
+Sectional #16
+Hosted by Jasper High School
+=========================================================
+Jasper High School
+Heritage Hills High School
+Pike Central High Sch
+Southridge High School
+Tell City Jr-Sr High School
+Forest Park Jr-Sr High Sch
+Loogootee Jr/Sr High School
+Northeast Dubois High School
+Springs Valley Comm High Sch
+Barr Reeve Jr-Sr High School
+Shoals Comm Jr-Sr High Sch
+=========================================================
+
+Sectional #17
+Hosted by Marion High School
+=========================================================
+Huntington North High School
+Marion High School
+Mississinewa High School
+Eastbrook High School
+Oak Hill High School
+Eastern (Greentown) Jr & Sr HS
+Wabash High School
+Taylor High School
+Madison-Grant High School
+Northfield Jr-Sr High School
+Southwood Jr-Sr High School
+Southern Wells Jr-Sr High Sch
+=========================================================
+
+Sectional #18
+Hosted by Hammond Gavit Mdl/High Sch
+=========================================================
+Lake Central High School
+Munster High School
+Hammond Morton Senior High School
+East Chicago Central High Sch
+Highland High School
+Gary West Side Leadership Acad.
+Hammond Gavit Mdl/High Sch
+Hammond High School
+Griffith Senior High School
+Hammond Clark Md/HS
+Calumet High School
+Gary Lighthouse Charter School
+Hammond Bishop Noll Institute
+Gary Roosevelt Car & Tech Acad
+Bowman Leadership Academy
+River Forest Jr-Sr High School
+Whiting High School
+Hammond Acad. Of Sci. & Tech.
+21st Century Charter Sch of Gary
+=========================================================
+
+Sectional #19
+Hosted by Delta High School
+=========================================================
+Muncie Central High School
+Jay County High School
+Delta High School
+Yorktown High School
+Blackford High School
+Muncie Burris Laboratory School
+Alexandria-Monroe High School
+Winchester Community High Sch
+Wapahani High School
+Monroe Central Jr-Sr High Sch
+Union City Community High Sch
+Wes-Del Middle/Senior High Sch
+Cowan High School
+Blue River Valley Jr-Sr HS
+Randolph Southern Jr-Sr High Sch
+Union (Modoc) Junior & High School
+=========================================================
+
+Sectional #20
+Hosted by South Dearborn High School
+=========================================================
+East Central High School
+South Dearborn High School
+Lawrenceburg High School
+Milan High School
+South Ripley High School
+Jac-Cen-Del Jr-Sr High School
+Rising Sun High School
+Batesville High School
+=========================================================
+
+Sectional #21
+Hosted by Culver Academies
+=========================================================
+Plymouth High School
+Culver Academies
+Tippecanoe Valley High School
+Knox Community High School
+Glenn High School
+Rochester Community High Sch
+Winamac Community High School
+North Judson-San Pierre High Sch
+Triton Jr-Sr High Sch
+Culver Community High Sch
+Argos Comm Jr-Sr High School
+Oregon-Davis Jr-Sr High School
+=========================================================
+
+Sectional #22
+Hosted by Brebeuf Jesuit Preparatory School
+=========================================================
+Carmel High School
+North Central (Indpls.) High School
+Pike High School
+Lawrence North High School
+Lawrence Central High School
+Zionsville Community High Sch
+Indpls. Cathedral HS
+Lebanon Senior High School
+Brebeuf Jesuit Preparatory School
+Indpls. Bishop Chatard HS
+Indpls. Broad Ripple HS for Prfm Arts
+Western Boone Jr-Sr High School
+Indpls. Scecina Memorial School
+Heritage Christian
+Park Tudor School (9-12)
+Indpls. Arlington Community HS
+Indpls. Shortridge Law & Public Policy
+University High School of Indiana
+Tindley Accelerated Sch
+Indiana Math & Science Academy
+International Sch of Indiana HS
+Indiana School For The Deaf
+Traders Point Christian Academy *
+Indiana School For The Blind
+=========================================================
+
+Sectional #23
+Hosted by West Noble High School
+=========================================================
+Warsaw Community HS
+East Noble High School
+Wawasee High School
+Angola High School
+West Noble High School
+Lakeland High School
+Fairfield Jr-Sr High School
+Manchester Jr-Sr High School
+Whitko High School
+Westview Jr-Sr High School
+Prairie Heights Sr High Sch
+Central Noble High School
+Fremont High School
+Lakeland Christian Academy
+=========================================================
+
+Sectional #24
+Hosted by Bellmont Senior High School
+=========================================================
+Norwell High School
+Bellmont Senior High School
+Heritage Jr/Sr High School
+Bluffton High School
+Adams Central High School
+South Adams High School
+F.W. Wayne High School
+New Haven High School
+=========================================================
+
+Sectional #25
+Hosted by Brown County High School
+=========================================================
+Columbus North High School
+Bloomington High School South
+Bloomington High School North
+Columbus East High School
+Martinsville High School
+Seymour Senior High School
+Edgewood High School
+Brown County High School
+Trinity Lutheran HS
+=========================================================
+
+Sectional #26
+Hosted by Benton Central Jr-Sr High Sch
+=========================================================
+Benton Central Jr-Sr High Sch
+Seeger Memorial Jr-Sr HS
+Fountain Central High School
+Covington Community High Sch
+Attica High School
+Harrison (W.Laf.) High Sch
+West Lafayette Jr/Sr High Sch
+Frontier Jr-Sr High School
+=========================================================
+
+Sectional #27
+Hosted by Rensselaer Central High Sch
+=========================================================
+Kankakee Valley High School
+Rensselaer Central High Sch
+North Newton Jr-Sr High Sch
+West Central Senior High School
+North White Jr/Sr High School
+Tri-County Middle-Senior High
+South Newton Senior High Sch
+Covenant Christian (DeMotte) HS
+=========================================================
+
+Sectional #28
+Hosted by Evansville Mater Dei High School
+=========================================================
+Castle High School
+Evans. North High School
+Evans. F. J. Reitz High Sch
+Evans. Harrison High Sch
+Boonville High School
+Evansville Bosse High School
+Evans. Reitz Memorial HS
+Gibson Southern High School
+Evansville Mater Dei High School
+North Posey Sr High Sch
+South Spencer High School
+Signature School Inc
+Tecumseh Jr-Sr High Sch
+Evansville Day School
+=========================================================
+
+Sectional #29
+Hosted by Crawford County Jr-Sr HS
+=========================================================
+New Albany Senior High School
+Floyd Central High School
+Corydon Central High School
+North Harrison High School
+Salem High School
+Eastern (Pekin) High Sch
+Paoli Jr & Sr High Sch
+Clarksville Senior High Sch
+Crawford County Jr-Sr HS
+Providence HS
+Perry Central Jr-Sr High Sch
+West Washington Jr-Sr HS
+Lanesville Jr-Sr HS
+Christian Academy of Indiana
+Borden High School
+South Central (Elizabeth) Jr & Sr HS
+Cannelton Elem & High School
+=========================================================
+
+Sectional #30
+Hosted by South Knox Middle-High School
+=========================================================
+Washington High School
+Vincennes Lincoln High School
+Princeton Comm High Sch
+North Knox High School
+Linton-Stockton High School
+South Knox Middle-High School
+North Daviess Jr-Sr High Sch
+Wood Memorial High
+Vincennes Rivet Middle & HS
+Washington Catholic Mid/HS
+=========================================================
+
+Sectional #31
+Hosted by South Putnam High School
+=========================================================
+Owen Valley Community HS
+Crawfordsville Sr High School
+Greencastle Senior High Sch
+Southmont Sr High School
+Cascade Senior High School
+North Putnam Sr High Sch
+Cloverdale High School
+South Putnam High School
+Eminence Jr-Sr High School
+=========================================================
+
+Sectional #32
+Hosted by Southwestern (Hanover) Middle/Sr HS
+=========================================================
+Jeffersonville High School
+Jennings County High School
+Madison Consolidated High Sch
+Silver Creek High School
+Scottsburg Senior High School
+Charlestown Senior High Sch
+Switzerland Co Senior High Sch
+Austin High School
+Southwestern (Hanover) Middle/Sr HS
+Henryville Jr & Sr High Sch
+New Washington Middle/High School
+Rock Creek Community Academy
+Crothersville Jr-Sr High School
+Shawe Memorial HS
+=========================================================
+
+			REGIONALS
+Regional #1
+Hosted by Ben Davis High School
+=========================================================
+Terre Haute North Vigo High Sch
+South Putnam High School
+=========================================================
+
+Regional #2
+Hosted by Noblesville High School
+=========================================================
+Noblesville High School
+Pendleton Heights High School
+=========================================================
+
+Regional #3
+Hosted by Crown Point High School
+=========================================================
+Crown Point High School
+Hammond Gavit Mdl/High Sch
+=========================================================
+
+Regional #4
+Hosted by Harrison (W.Laf.) High Sch
+=========================================================
+Harrison (W.Laf.) High Sch
+Benton Central Jr-Sr High Sch
+=========================================================
+
+Regional #5
+Hosted by Elkhart Central High School
+=========================================================
+Elkhart Central High School
+S.B. Riley High School
+=========================================================
+
+Regional #6
+Hosted by Bedford-North Lawrence High School
+=========================================================
+Bedford-North Lawrence High School
+Southwestern (Hanover) Middle/Sr HS
+=========================================================
+
+Regional #7
+Hosted by Shelbyville Sr High Sch
+=========================================================
+Franklin Community High Sch
+New Palestine High School
+=========================================================
+
+Regional #8
+Hosted by Marion High School
+=========================================================
+Marion High School
+Bellmont Senior High School
+=========================================================
+
+Regional #9
+Hosted by New Prairie High School
+=========================================================
+Chesterton Senior High School
+Rensselaer Central High Sch
+=========================================================
+
+Regional #10
+Hosted by Delta High School
+=========================================================
+Delta High School
+Brebeuf Jesuit Preparatory School
+=========================================================
+
+Regional #11
+Hosted by Culver Academies
+=========================================================
+Logansport Comm High Sch
+Culver Academies
+=========================================================
+
+Regional #12
+Hosted by Rushville Consolidated High Sch
+=========================================================
+Connersville Sr High School
+South Dearborn High School
+=========================================================
+
+Regional #13
+Hosted by West Noble High School
+=========================================================
+F.W. Northrop High School
+West Noble High School
+=========================================================
+
+Regional #14
+Hosted by Brown County High School
+=========================================================
+Brown County High School
+Ben Davis High School
+=========================================================
+
+Regional #15
+Hosted by Pike Central High Sch
+=========================================================
+Evansville Mater Dei High School
+South Knox Middle-High School
+=========================================================
+
+Regional #16
+Hosted by Crawford County Jr-Sr HS
+=========================================================
+Crawford County Jr-Sr HS
+Jasper High School
+=========================================================
+
+			SEMISTATE
+Semi-State #1
+Hosted by Shelbyville Sr High Sch
+=========================================================
+Ben Davis High School
+Noblesville High School
+Shelbyville Sr High Sch
+Rushville Consolidated High Sch
+=========================================================
+
+Semi-State #2
+Hosted by New Haven High School
+=========================================================
+Marion High School
+Delta High School
+West Noble High School
+Elkhart Central High School
+=========================================================
+
+Semi-State #3
+Hosted by New Prairie High School
+=========================================================
+Crown Point High School
+Harrison (W.Laf.) High Sch
+New Prairie High School
+Culver Academies
+=========================================================
+
+Semi-State #4
+Hosted by Brown County High School
+=========================================================
+Bedford-North Lawrence High School
+Brown County High School
+Pike Central High Sch
+Crawford County Jr-Sr HS
+=========================================================
+
+			  STATE
+
+State #1
+Hosted by Terre Haute LaVern Gibson
+=========================================================
+Shelbyville Sr High Sch
+New Haven High School
+New Prairie High School
+Brown County High School
+=========================================================

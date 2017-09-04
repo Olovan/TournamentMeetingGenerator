@@ -49,9 +49,24 @@ public class MapPanel extends JPanel {
 
 		loadImageUrl(path + builder + "&key=" + key);
 	}
+	
+	public void displaySchool(School school) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("&markers=color:red%7C" + school.latitude + "," + school.longitude);
+		loadImageUrl(path + builder + "&key=" + key);
+	}
 
         public void displayMatch(Match[] matches) {
-            // simultaneously display all meets of a given category
+        	if(matches == null || matches.length == 0) {
+        		loadImageUrl(path + "&key=" + key);
+        		return;
+        	}
+            StringBuilder builder = new StringBuilder();
+            builder.append("&markers=color:red");
+            for(Match match : matches) {
+            	builder.append("%7C" + match.host.latitude + "," + match.host.longitude);
+            }
+            loadImageUrl(path + builder + "&key=" + key);
         }
         
 	private void loadImageUrl(String path) {
