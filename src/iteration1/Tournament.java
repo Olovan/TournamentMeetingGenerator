@@ -97,6 +97,9 @@ public class Tournament implements Serializable {
         // number of hosts should be dealt with before creating the tournament
         Match[] matches = new Match[numHosts];
 
+		if(numHosts == 0)
+			return matches;
+
         for(int i = 0; i < numHosts; i++) 
         {
             matches[i] = new Match();
