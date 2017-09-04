@@ -311,7 +311,7 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // TODO Ryan or Quentin
+    // TODO Ryan
     public class ChangeHostListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             // have user modify the hosts for torunaments from a new window
