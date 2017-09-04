@@ -14,6 +14,7 @@ public class Tournament implements Serializable {
     public String         tournamentName;
     public Configuration  config;
     public School[]       participants;
+	public School[]       hosts;
     public Match[]        sectionals;
     public Match[]        regionals;
     public Match[]        semiState;
@@ -23,16 +24,28 @@ public class Tournament implements Serializable {
     public Tournament(String name, School[] participants, School[] hosts, Configuration config) {
         tournamentName = name;
         this.config = config;
+		this.hosts = hosts;
+		this.participants = participants;
+
 
         School[] sectionalHosts = getHostsForMeet(1, hosts);
         School[] regionalHosts = getHostsForMeet(2, hosts);
         School[] semiStateHosts = getHostsForMeet(3, hosts);
         School[] stateHost = getHostsForMeet(4, hosts);
 
-        sectionals = assignTeamsToHosts(sectionalHosts, participants, config.numberOfSectionalHosts);
-        regionals = assignTeamsToHosts(regionalHosts, sectionalHosts, config.numberOfRegionalHosts);
-        semiState = assignTeamsToHosts(semiStateHosts, regionalHosts, config.numberOfSemiStateHosts);
-        finals = assignTeamsToHosts(stateHost, semiStateHosts, 1);
+		//Use participating schools variable in case certain brackets are empty 
+		School[] participatingSchools = participants;
+
+        sectionals = assignTeamsToHosts(sectionalHosts, participatingSchools, config.numberOfSectionalHosts);
+		if(sectionals.length != 0)
+			participatingSchools = sectionalHosts;
+        regionals = assignTeamsToHosts(regionalHosts, participatingSchools, config.numberOfRegionalHosts);
+		if(regionals.length != 0)
+			participatingSchools = regionalHosts;
+        semiState = assignTeamsToHosts(semiStateHosts, participatingSchools, config.numberOfSemiStateHosts);
+		if(semiState.length != 0)
+			participatingSchools = semiStateHosts;
+        finals = assignTeamsToHosts(stateHost, participatingSchools, 1);
 
         balanceHosts(sectionals, config.minTeamsPerHost[0]);
         balanceHosts(regionals, config.minTeamsPerHost[1]);
