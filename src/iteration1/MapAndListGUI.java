@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MapAndListGUI extends JFrame {   
     // defaults settings
@@ -84,15 +85,21 @@ public class MapAndListGUI extends JFrame {
         menuBar.add(fileMenu);
         menuBar.add(modifyMenu);
         setJMenuBar(menuBar);
-        
-        // create output displays then add to frame
-        mapPanel = new MapPanel();
-        listPanel = new ListPanel(currentTournament, mapPanel); 
-        add(mapPanel);
-        add(listPanel); 
     }
     
-    // [DESC]
+    // [TEST]
+    private void createPanels() {
+        if (listPanel != null) {
+            remove(listPanel);
+        }
+        mapPanel = new MapPanel();
+        listPanel = new ListPanel(currentTournament, mapPanel);
+        
+        add(mapPanel);
+        add(listPanel);
+    }
+
+    // Generate+Display a new Tournament based on a given enrollment file and configuration settings.
     public boolean generateTournament(File selectedFile) {
         // discern file Enrollment(.csv) or Saved Tournament(.ser)
         String fileName = selectedFile.getName();
@@ -121,8 +128,11 @@ public class MapAndListGUI extends JFrame {
             hosts.toArray(hostsArray);
             participants.toArray(participantsArray);
             
-            //create Tournament
+            // create Tournament
             currentTournament = new Tournament(TOURNAMENT_NAME,participantsArray, hostsArray, config);
+            
+            // display
+            createPanels();
         }
         else if (fileName.contains(".ser")) {
             loadSavedTournament(selectedFile);
@@ -141,7 +151,7 @@ public class MapAndListGUI extends JFrame {
     
     // Load previously generated/modifies Tournament and display to GUI.
     // @return: True if Tournament was successfully loaded to GUI,
-    // False otherwise.
+    //          False otherwise.
     private boolean loadSavedTournament(File saveFile) {
         Tournament savedTourney;
 
@@ -160,7 +170,7 @@ public class MapAndListGUI extends JFrame {
             
             // update GUI
             currentTournament = savedTourney;
-            refreshListPanel();
+            createPanels();
         
             //send confirmation
             JOptionPane.showMessageDialog(null,
@@ -180,18 +190,34 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // TODO Ryan or Quentin
-    private boolean refreshListPanel() {
-        // refresh listPanel with updated currentTournament information
+    // [TEST]
+    private File chooseFile(String type, String ext) {
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(type, ext);
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setFileFilter(filter);
         
-        return true;
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            return selectedFile;
+        }
+        else {
+            JOptionPane.showMessageDialog(null,
+                                          "You did not select a file.",
+                                          "Input Message",
+                                          JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
     }
     
-    // TODO Ryan or Quentin
+    // [TEST]
     public class GenerateListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // get enrollement file (.csv)
-            // pass file to generateTournament
+            File enrollmentFile = chooseFile("Comma Separated Values", "csv");
+            if (enrollmentFile != null) {
+                generateTournament(enrollmentFile);
+            }
         }
     }
     
@@ -259,11 +285,13 @@ public class MapAndListGUI extends JFrame {
         }
     }
     
-    // TODO Ryan or Quentin
+    // [TEST]
     public class LoadListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            // get Tournament file (.ser)
-            // pass file to loadSavedTournament()
+            File tourneyFile = chooseFile("Serialized File", "ser");
+            if (tourneyFile != null) {
+                loadSavedTournament(tourneyFile);
+            }
         }
     }
     
