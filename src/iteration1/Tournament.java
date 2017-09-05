@@ -13,16 +13,19 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Tournament implements Serializable {
-    public String         tournamentName;
-    public Configuration  config;
-    public School[]       participants;
-	public School[]       hosts;
-    public Match[]        sectionals;
-    public Match[]        regionals;
-    public Match[]        semiState;
-    public Match[]        finals; //Only contains 1 match but is an array type for consistency
+    public String         tournamentName = "";
+    public Configuration  config = new Configuration();
+    public School[]       participants = new School[0];
+	public School[]       hosts = new School[0];
+    public Match[]        sectionals = new Match[0];
+    public Match[]        regionals = new Match[0];
+    public Match[]        semiState = new Match[0];
+    public Match[]        finals = new Match[0]; //Only contains 1 match but is an array type for consistency
 
-    //TODO: Micah
+    //Empty for the purposes of having an empty tournament placeholder
+    public Tournament() {
+    	
+    }
     public Tournament(String name, School[] participants, School[] hosts, Configuration config) {
         tournamentName = name;
         this.config = config;

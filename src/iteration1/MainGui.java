@@ -46,6 +46,7 @@ public class MainGui {
 	private AddHostWindow addHostWindow;
 	private MoveParticipantWindow moveParticipantWindow;
 	private CreateSchoolFrame createSchoolFrame;
+	private MoveSchoolFrame moveSchoolFrame;
 
 	/**
 	 * Launch the application.
@@ -75,7 +76,7 @@ public class MainGui {
 	 */
 	private void initialize() {
 
-
+		tournament = new Tournament();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,12 +113,22 @@ public class MainGui {
 		JMenu mnNewMenu = new JMenu("File");
 		menuBar.add(mnNewMenu);
 	
+		JMenu editMenu = new JMenu("Modify");
 		JMenuItem createSchoolMenu = new JMenuItem("Create School");
-		menuBar.add(createSchoolMenu);
+		JMenuItem moveSchoolMenuItem = new JMenuItem("Move School");
+		editMenu.add(createSchoolMenu);
+		editMenu.add(moveSchoolMenuItem);
+		menuBar.add(editMenu);
 		createSchoolMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createSchoolFrame.tournament = tournament;
 				createSchoolFrame.display();
+			}
+		});
+		moveSchoolMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				moveSchoolFrame.tournament = tournament;
+				moveSchoolFrame.display();
 			}
 		});
 
@@ -161,6 +172,7 @@ public class MainGui {
 		frame.pack();
 		configWindow = new ConfigWindow(this);
 		createSchoolFrame = new CreateSchoolFrame(tournament);
+		moveSchoolFrame = new MoveSchoolFrame(tournament);
 	}
 
 	private void loadFromFile() {

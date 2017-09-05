@@ -185,7 +185,7 @@ public class CreateSchoolFrame extends JFrame {
 	}
 	
 	private void errorMessage(String msg) {
-		JOptionPane.showMessageDialog(this, msg, "Eror", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, msg, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	//Event callback for "Cancel" button
