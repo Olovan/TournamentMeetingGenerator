@@ -6,6 +6,8 @@ import java.io.File;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.BoxLayout;
@@ -27,6 +29,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
@@ -42,9 +45,6 @@ public class MainGui {
 	public Tournament tournament;
 	private TournamentComboBox matchComboBox;
 	private ConfigWindow configWindow;
-	private AddParticipantsWindow addParticipantWindow;
-	private AddHostWindow addHostWindow;
-	private MoveParticipantWindow moveParticipantWindow;
 	private CreateSchoolFrame createSchoolFrame;
 	private MoveSchoolFrame moveSchoolFrame;
 
@@ -116,8 +116,10 @@ public class MainGui {
 		JMenu editMenu = new JMenu("Modify");
 		JMenuItem createSchoolMenu = new JMenuItem("Create School");
 		JMenuItem moveSchoolMenuItem = new JMenuItem("Move School");
+		JMenuItem updateTournament = new JMenuItem("Update Tournament");
 		editMenu.add(createSchoolMenu);
 		editMenu.add(moveSchoolMenuItem);
+		editMenu.add(updateTournament);
 		menuBar.add(editMenu);
 		createSchoolMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,12 +133,24 @@ public class MainGui {
 				moveSchoolFrame.display();
 			}
 		});
+		updateTournament.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				School[] participantsArray = new School[tournament.participants.size()];
+				School[] hostsArray = new School[tournament.hosts.size()];
+				tournament.participants.toArray(participantsArray);
+				tournament.hosts.toArray(hostsArray);
+				generateFromData(participantsArray, hostsArray, tournament.config);
+				matchComboBox.loadMatches(tournament);
+			}
+		});
 
 		JMenuItem saveTournamentMenuItem = new JMenuItem("Save Tournament");
+		JMenuItem saveTournamentTextMenuItem = new JMenuItem("Save Tournament As Text");
 		JMenuItem genTournamentMenuItem = new JMenuItem("Generate Tournament");
 		JMenuItem loadTournamentMenuItem = new JMenuItem("Load Tournament");
 		JMenuItem configMenuItem = new JMenuItem("Config Settings");
 		mnNewMenu.add(saveTournamentMenuItem);
+		mnNewMenu.add(saveTournamentTextMenuItem);
 		mnNewMenu.add(loadTournamentMenuItem);
 		mnNewMenu.add(genTournamentMenuItem);
 		mnNewMenu.add(configMenuItem);
@@ -144,6 +158,11 @@ public class MainGui {
 		saveTournamentMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveToFile();
+			}
+		});
+		saveTournamentTextMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				saveToTextFile();
 			}
 		});
 		loadTournamentMenuItem.addActionListener(new ActionListener() {
@@ -161,6 +180,7 @@ public class MainGui {
 		});
 		configMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				configWindow.tournament = tournament;
 				configWindow.display();
 			}
 		});
@@ -185,6 +205,7 @@ public class MainGui {
         
         File targetFile = fileChooser.getSelectedFile();
 		tournament = Tournament.load(targetFile);
+		
 		matchComboBox.loadMatches(tournament);
 	}
 
@@ -193,6 +214,15 @@ public class MainGui {
 		if(fileName == null || fileName.isEmpty()) return; //Bail out if cancelled
 		
 		tournament.save(new File("saved_files/" + fileName + ".ser"));
+	}
+	
+	private void saveToTextFile() {
+		String fileName = JOptionPane.showInputDialog("Please Name the Tournament");
+		if(fileName == null || fileName.isEmpty()) return; //Bail out if cancelled
+		
+		tournament.tournamentName = fileName;
+		
+		tournament.outputToFile(new File("./"));
 	}
 	
 	private File getStudentsFile() {
@@ -204,6 +234,19 @@ public class MainGui {
         if(result != JFileChooser.APPROVE_OPTION) return null;
         
         return fileChooser.getSelectedFile();
+	}
+	
+	private boolean generateFromData(School[] participants, School[] hosts, Configuration config) {
+		if(!Tournament.isValid(participants, hosts, config)) {
+			int secHosts = Tournament.getHostsForMeet(1, hosts, config).length;
+			int regHosts = Tournament.getHostsForMeet(2, hosts, config).length;
+			int semHosts = Tournament.getHostsForMeet(3, hosts, config).length;
+			JOptionPane.showMessageDialog(frame, "Tournament cannot be generated with these configuration options. Not enough hosts \nYou have:\n " + secHosts + " Sectional Hosts\n" + regHosts + " Regional Hosts\n" + semHosts + "SemiState Hosts\nAvailable with your current configuration settings" , "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+
+		tournament = new Tournament("Tournament", participants, hosts, config);
+		return true;
 	}
 
 	private void generateFromFiles(String tournamentFile, String configFile) {
@@ -357,7 +400,7 @@ public class MainGui {
 
 	//This is the popup Window that controls the Configuration Settings
 	private class ConfigWindow extends JFrame {
-		private MainGui parent;
+		public Tournament tournament;
 
 		private JTextField numSectionals;
 		private JTextField numRegionals;
@@ -366,10 +409,16 @@ public class MainGui {
 		private JTextField minSectionals;
 		private JTextField minRegionals;
 		private JTextField minSemiStates;
+		
+		private JCheckBox useBreakpointsCB;
+		private JTextField breakpointsTF;
+		private JTextField selectedBreakpointTF;
+		private JButton acceptBtn;
+		private JButton cancelBtn;
 
 		public ConfigWindow(MainGui inputParent) {
 			super();
-			parent = inputParent;
+			tournament = inputParent.tournament;
 			numSectionals = new JTextField(2);
 			numRegionals = new JTextField(2);
 			numSemiStates = new JTextField(2);
@@ -377,8 +426,16 @@ public class MainGui {
 			minSectionals = new JTextField(3);
 			minRegionals = new JTextField(3);
 			minSemiStates = new JTextField(3);
+			
+			breakpointsTF = new JTextField(10);
+			useBreakpointsCB = new JCheckBox();
+			
+			selectedBreakpointTF = new JTextField(2);
+			
+			acceptBtn = new JButton("Accept");
+			cancelBtn = new JButton("Cancel");
 
-			JPanel content = new JPanel(new FlowLayout());
+			JPanel content = new JPanel(new GridLayout(0, 2));
 			setContentPane(content);
 			content.add(new JLabel("Number of Sectionals: "));
 			content.add(numSectionals);
@@ -392,22 +449,47 @@ public class MainGui {
 			content.add(minRegionals);
 			content.add(new JLabel("Minimum Teams Per SemiState"));
 			content.add(minSemiStates);
+			content.add(new JLabel("Use Breakpoints"));
+			content.add(useBreakpointsCB);
+			content.add(new JLabel("Selected Class Breakpoint"));
+			content.add(selectedBreakpointTF);
+			content.add(new JLabel("Breakpoints"));
+			content.add(breakpointsTF);
+			content.add(acceptBtn);
+			content.add(cancelBtn);
+			
+			acceptBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					save();
+					setVisible(false);
+				}
+			});
+			cancelBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+				}
+			});
 
-			setPreferredSize(new Dimension(300, 200));
+			setPreferredSize(new Dimension(300, 300));
 
 			pack();
 			loadConfigValues();
 		}
 
 		public void loadConfigValues() {
-			if(parent.tournament == null) return;
+			if(tournament == null) return;
+			
+			Configuration config = tournament.config;
 
-			numSectionals.setText(parent.tournament.config.numberOfSectionalHosts + "");
-			numRegionals.setText(parent.tournament.config.numberOfRegionalHosts + "");
-			numSemiStates.setText(parent.tournament.config.numberOfSemiStateHosts + "");
-			minSectionals.setText(parent.tournament.config.minTeamsPerHost[0] + "");
-			minRegionals.setText(parent.tournament.config.minTeamsPerHost[1] + "");
-			minSemiStates.setText(parent.tournament.config.minTeamsPerHost[2] + "");
+			numSectionals.setText(config.numberOfSectionalHosts + "");
+			numRegionals.setText(config.numberOfRegionalHosts + "");
+			numSemiStates.setText(config.numberOfSemiStateHosts + "");
+			minSectionals.setText(config.minTeamsPerHost[0] + "");
+			minRegionals.setText(config.minTeamsPerHost[1] + "");
+			minSemiStates.setText(config.minTeamsPerHost[2] + "");
+			useBreakpointsCB.setSelected(config.useBreakpoints);
+			breakpointsTF.setText(printArray(config.classBreakpoints));
+			selectedBreakpointTF.setText(config.selectedBreakpoint + "");
 		}
 
 		public void display() {
@@ -417,23 +499,35 @@ public class MainGui {
 
 		public void save() {
 			Configuration config = new Configuration();
+			config.numberOfSectionalHosts = Integer.parseInt(numSectionals.getText());
+			config.numberOfRegionalHosts = Integer.parseInt(numRegionals.getText());
+			config.numberOfSemiStateHosts = Integer.parseInt(numSemiStates.getText());
+			config.minTeamsPerHost[0] = Integer.parseInt(minSectionals.getText());
+			config.minTeamsPerHost[1] = Integer.parseInt(minRegionals.getText());
+			config.minTeamsPerHost[2] = Integer.parseInt(minSemiStates.getText());
+			config.useBreakpoints = useBreakpointsCB.isSelected();
+			config.selectedBreakpoint = Integer.parseInt(selectedBreakpointTF.getText());
+			config.parseString("CLASS_BREAKPOINTS " + breakpointsTF.getText());
+			
+			tournament.config = config;
 		}
 
 		public void cancel() {
 			setVisible(false);
 		}
-
-	}
-
-	private class AddParticipantsWindow extends JFrame {
-
-	}
-
-	private class AddHostWindow extends JFrame {
-
-	}
-
-	private class MoveParticipantWindow extends JFrame {
+		
+		private String printArray(int[] input) {
+			if(input.length <= 0)
+				return "";
+			
+			String retVal = "";
+			retVal += input[0];
+			
+			for(int i = 1; i < input.length; i++)
+				retVal += " " + input[i];
+			
+			return retVal;
+		}
 
 	}
 }

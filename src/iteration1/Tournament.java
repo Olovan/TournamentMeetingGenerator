@@ -1,7 +1,8 @@
 package iteration1;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.List;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
@@ -15,8 +16,8 @@ import java.io.Serializable;
 public class Tournament implements Serializable {
     public String         tournamentName = "";
     public Configuration  config = new Configuration();
-    public School[]       participants = new School[0];
-	public School[]       hosts = new School[0];
+    public ArrayList<School>       participants = new ArrayList<School>();
+	public ArrayList<School>       hosts = new ArrayList<School>();
     public Match[]        sectionals = new Match[0];
     public Match[]        regionals = new Match[0];
     public Match[]        semiState = new Match[0];
@@ -29,17 +30,17 @@ public class Tournament implements Serializable {
     public Tournament(String name, School[] participants, School[] hosts, Configuration config) {
         tournamentName = name;
         this.config = config;
-		this.hosts = hosts;
-		this.participants = participants;
+		this.hosts = new ArrayList<School>(Arrays.asList(hosts));
+		this.participants = new ArrayList<School>(Arrays.asList(participants));
 
 
-        School[] sectionalHosts = getHostsForMeet(1, hosts);
-        School[] regionalHosts = getHostsForMeet(2, hosts);
-        School[] semiStateHosts = getHostsForMeet(3, hosts);
-        School[] stateHost = getHostsForMeet(4, hosts);
+        School[] sectionalHosts = Tournament.getHostsForMeet(1, hosts, config);
+        School[] regionalHosts = Tournament.getHostsForMeet(2, hosts, config);
+        School[] semiStateHosts = Tournament.getHostsForMeet(3, hosts, config);
+        School[] stateHost = Tournament.getHostsForMeet(4, hosts, config);
 
 		//Use participating schools variable in case certain brackets are empty 
-		School[] participatingSchools = participants;
+		School[] participatingSchools = Tournament.getSchoolsInBracket(participants, config);
 
         sectionals = assignTeamsToHosts(sectionalHosts, participatingSchools, config.numberOfSectionalHosts);
 		if(sectionals.length != 0)
@@ -57,42 +58,87 @@ public class Tournament implements Serializable {
         balanceHosts(semiState, config.minTeamsPerHost[2]);
     }
 
+    public static boolean isValid(School[] participants, School[] hosts, Configuration config) {
+    	School[] sectionalHosts = Tournament.getHostsForMeet(1, hosts, config);
+    	School[] regionalHosts = Tournament.getHostsForMeet(2, hosts, config);
+    	School[] semiStateHosts = Tournament.getHostsForMeet(3, hosts, config);
+    	
+    	if(config.numberOfSectionalHosts > sectionalHosts.length)
+    		return false;
+    	if(config.numberOfRegionalHosts > regionalHosts.length)
+    		return false;
+    	if(config.numberOfSemiStateHosts > semiStateHosts.length)
+    		return false;
+    	
+    	return true;
+    }
+    
+    private static int getBracket(School school, Configuration config) {
+    	if(config.classBreakpoints == null || config.classBreakpoints.length == 0) {
+    		return -1;
+    	}
+    	
+    	for(int i = 0; i < config.classBreakpoints.length; i++) {
+    		if(school.enrollment < config.classBreakpoints[i])
+    			return i;
+    	}
+    	return config.classBreakpoints.length;		
+    }
+    
+    private static School[] getSchoolsInBracket(School[] schools, Configuration config) {
+    	if(!config.useBreakpoints)
+    		return schools;
+    	
+    	ArrayList<School> listSchools = new ArrayList<School>();
+    	
+    	for(int i = 0; i < schools.length; i++) {
+    		if(Tournament.getBracket(schools[i], config) != config.selectedBreakpoint)
+    			continue;
+    		
+    		if(schools[i].participation != 0)
+    			listSchools.add(schools[i]);
+    	}
+    	
+    	School[] retSchools = new School[listSchools.size()];
+    	listSchools.toArray(retSchools);
+    	return retSchools;
+    }
 
     //Gets all the hosts willing to host at a specific level
-    private School[] getHostsForMeet(int meetLevel, School[] hosts) {
-        ArrayList<School> listHosts = new ArrayList<School>();
-        switch(meetLevel) {
-            //Sectionals
-            case 1:
-                for(School host : hosts)
-                    if(host.hostSectionals != 0)
-                        listHosts.add(host);
-                break;
-                //Regionals
-            case 2:
-                for(School host : hosts)
-                    if(host.hostRegionals != 0)
-                        listHosts.add(host);
-                break;
-                //Semi-State
-            case 3:
-                for(School host : hosts)
-                    if(host.hostSemiState != 0)
-                        listHosts.add(host);
-                break;
-                //Finals
-            case 4: 
-                for(School host : hosts)
-                    if(host.schoolName.contentEquals("Terre Haute LaVern Gibson"))
-                        listHosts.add(host);
-                break;
-        }
+    public static School[] getHostsForMeet(int meetLevel, School[] hosts, Configuration config) {
+    	ArrayList<School> listHosts = new ArrayList<School>();
 
-        School[] returnArray = new School[listHosts.size()];
-        listHosts.toArray(returnArray);
+    	//Handle finals seperately
+    	if(meetLevel == 4)
+    		return new School[] {new School("Terre Haute LaVern Gibson",0,0,0,0,0,-87.2602811,39.4564711)};
 
-        //TODO: Micah - Restrict number of hosts to maximum in config settings
-        return returnArray;
+    	for(School host : hosts) {
+    		if(config.useBreakpoints && getBracket(host, config) != config.selectedBreakpoint)
+    			continue;
+    		switch(meetLevel) {
+    		//Sectionals
+    		case 1:
+    			if(host.hostSectionals != 0)
+    				listHosts.add(host);
+    			break;
+    			//Regionals
+    		case 2:
+    			if(host.hostRegionals != 0)
+    				listHosts.add(host);
+    			break;
+    			//Semi-State
+    		case 3:
+    			if(host.hostSemiState != 0)
+    				listHosts.add(host);
+    			break;
+    		}
+    	}
+
+    	School[] returnArray = new School[listHosts.size()];
+    	listHosts.toArray(returnArray);
+
+    	//TODO: Micah - Restrict number of hosts to maximum in config settings
+    	return returnArray;
     }
 
 
@@ -142,6 +188,9 @@ public class Tournament implements Serializable {
                         }
                     }
                 }
+                
+                if(targetSchool == null) break;   //If we didn't find a target school we don't have enough schools so just skip it
+
                 //Now that we've found the closest school from an overfilled Match we will steal it for the underfilledMatch
                 underfilledMatch.addSchool(targetSchool);
                 targetMatch.removeSchool(targetSchool);

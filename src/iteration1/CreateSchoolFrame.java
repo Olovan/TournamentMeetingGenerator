@@ -176,6 +176,7 @@ public class CreateSchoolFrame extends JFrame {
 		if(sectionalComboBox.getSelectedIndex() > 0) {
 			Match selectedSectional = tournament.sectionals[sectionalComboBox.getSelectedIndex() - 1];
 			selectedSectional.schools.add(returnSchool);
+			tournament.participants.add(returnSchool);
 			setVisible(false);
 			return returnSchool;
 		} else {
