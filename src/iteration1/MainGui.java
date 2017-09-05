@@ -121,28 +121,31 @@ public class MainGui {
 			}
 		});
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Save Tournament");
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Generate Tournament");
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Load Tournament");
+		JMenuItem saveTournamentMenuItem = new JMenuItem("Save Tournament");
+		JMenuItem genTournamentMenuItem = new JMenuItem("Generate Tournament");
+		JMenuItem loadTournamentMenuItem = new JMenuItem("Load Tournament");
 		JMenuItem configMenuItem = new JMenuItem("Config Settings");
-		mnNewMenu.add(mntmNewMenuItem);
-		mnNewMenu.add(mntmNewMenuItem_1);
-		mnNewMenu.add(mntmNewMenuItem_2);
+		mnNewMenu.add(saveTournamentMenuItem);
+		mnNewMenu.add(loadTournamentMenuItem);
+		mnNewMenu.add(genTournamentMenuItem);
 		mnNewMenu.add(configMenuItem);
 
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		saveTournamentMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveToFile();
 			}
 		});
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+		loadTournamentMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				loadFromFile();
 			}
 		});
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+		genTournamentMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				generateFromFiles(ENROLLMENT_FILE, CONFIG_FILE);
+				File studentsFile = getStudentsFile();
+				if(studentsFile == null) return;
+				
+				generateFromFiles(studentsFile.getPath(), CONFIG_FILE);
 		}
 		});
 		configMenuItem.addActionListener(new ActionListener() {
@@ -178,6 +181,17 @@ public class MainGui {
 		if(fileName == null || fileName.isEmpty()) return; //Bail out if cancelled
 		
 		tournament.save(new File("saved_files/" + fileName + ".ser"));
+	}
+	
+	private File getStudentsFile() {
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Student Enrollment File", "csv");
+        JFileChooser fileChooser = new JFileChooser("./etc");
+        fileChooser.setFileFilter(filter);
+        int result = fileChooser.showOpenDialog(frame);
+        
+        if(result != JFileChooser.APPROVE_OPTION) return null;
+        
+        return fileChooser.getSelectedFile();
 	}
 
 	private void generateFromFiles(String tournamentFile, String configFile) {
