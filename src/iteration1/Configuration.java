@@ -16,6 +16,10 @@ public class Configuration implements Serializable{
 	public int numberOfClasses = 4;
 	public int[] classBreakpoints = {200, 400, 800};
 
+	public Configuration() {
+		
+	}
+	
 	public Configuration(String filename) {
 		loadFromFile(filename);
 	}

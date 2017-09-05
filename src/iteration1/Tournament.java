@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -290,7 +292,6 @@ public class Tournament implements Serializable {
     // @return: True if Tournament was serialized to a file,
     // False otherwise.
     public boolean save(File path) {
-        String filename = tournamentName + ".ser";
 
         // check parameter
         if (path == null){
@@ -303,7 +304,7 @@ public class Tournament implements Serializable {
 
         try {
             // write Tournamnet to file
-            fOut = new FileOutputStream(new File(path, filename));
+            fOut = new FileOutputStream(path);
             oOut = new ObjectOutputStream(fOut);
             oOut.writeObject(this);
 
@@ -318,6 +319,22 @@ public class Tournament implements Serializable {
 
         return true;
     }
+    
+	public static Tournament load(File saveFile) {
+		Tournament retVal;
+		try {
+			ObjectInputStream objectIS = new ObjectInputStream(new FileInputStream(saveFile));
+			retVal = (Tournament)objectIS.readObject();
+			objectIS.close();
+			return retVal;
+		}
+		catch(Exception e) {
+			System.out.println("Unable to load Tournament save file");
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 
     // Get tournament schedule in tabular form.
     public String toString() {

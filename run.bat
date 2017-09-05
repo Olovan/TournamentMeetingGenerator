@@ -3,5 +3,5 @@ IF "%1"=="" (
 ) ELSE (
 	SET INPUT_FILE=%1
 )
-java -cp "bin/;." iteration1.Main %INPUT_FILE%
+java -cp "bin/;." iteration1.MainGui %INPUT_FILE%
 
