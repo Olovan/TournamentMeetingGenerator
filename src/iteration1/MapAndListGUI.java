@@ -37,6 +37,9 @@ public class MapAndListGUI extends JFrame {
     private MapPanel mapPanel;
     private JPanel listPanel;
     
+    // for the updateTournament method
+    public List<School> allSchools;
+    
     // Constructor
     public MapAndListGUI(File selectedFile) {
     	super();
@@ -113,7 +116,8 @@ public class MapAndListGUI extends JFrame {
         String fileName = selectedFile.getName();
         if (fileName.contains(".csv")) {
             // read schools from enrollement file and set config
-            List<School> allSchools = ReadSchoolFile.GetSchoolsFromFile(selectedFile.getAbsolutePath());
+        	// made this a global variable so updateTournament can access it
+            allSchools = ReadSchoolFile.GetSchoolsFromFile(selectedFile.getAbsolutePath());
             Configuration config = new Configuration(CONFIG_FILE);
             
             // Create list of hosts and participants from allSchools
@@ -154,6 +158,39 @@ public class MapAndListGUI extends JFrame {
                                       "Successfully generated tournament.",
                                       "Output Message",
                                       JOptionPane.INFORMATION_MESSAGE);
+        return true;
+    }
+    
+    public boolean updateTournament() {
+    	
+        Configuration config = new Configuration(CONFIG_FILE);
+
+    	// Create a new list of hosts and participants from allSchools
+        List<School> hosts = new ArrayList<School>();
+        List<School> participants = new ArrayList<School>();
+        for(School school : allSchools) {
+            if(school.participation != 0)
+                participants.add(school);
+
+            if(school.hostSectionals != 0 || school.hostRegionals != 0 || school.hostSemiState != 0)
+                hosts.add(school);
+
+            if(school.schoolName.contentEquals("Terre Haute LaVern Gibson"))
+                hosts.add(school);
+        }
+        
+        // convert lists into arrays
+        School[] hostsArray = new School[hosts.size()];
+        School[] participantsArray = new School[participants.size()];
+        hosts.toArray(hostsArray);
+        participants.toArray(participantsArray);
+        
+        // create Tournament
+        currentTournament = new Tournament(TOURNAMENT_NAME,participantsArray, hostsArray, config);
+        
+        // display
+        createPanels();
+        
         return true;
     }
     

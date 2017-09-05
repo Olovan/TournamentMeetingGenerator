@@ -1,6 +1,7 @@
 package iteration1;
 
 import java.awt.EventQueue;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -128,10 +129,12 @@ public class AddParticipant {
 				lat = Integer.parseInt(latField.getText());
 				lon = Integer.parseInt(longField.getText());
 				
-				
+				File selectedFile;
 				School newParticipant = new School(name, enrollment, 1, sec, reg, semi, lat, lon);
 				
-				// Remake the tournament
+				// update the tournament
+				MapAndListGUI updated = new MapAndListGUI(new File("etc/Boys_Enrollment.csv"));
+				updated.updateTournament();
 				
 				JOptionPane.showMessageDialog(null, "Participant was added.", "Success", JOptionPane.INFORMATION_MESSAGE);
 				
