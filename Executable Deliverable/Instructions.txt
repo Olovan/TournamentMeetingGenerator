@@ -1,0 +1,13 @@
+Double click the jar file to run the program.
+
+File > Save Tournament        -   Saves tournament as a Binary File (can be loaded)
+File > Save Tournament As Text-   Saves tournament into text form (cannot be loaded)
+File > Load Tournament        -   Loads previously saved Tournament
+File > Generate Tournament    -   Creates a new tournnament from an input Enrollment CSV file
+                                  This option always loads the config options inside config.txt
+File > Config Settings        -   Edits the config settings of the current tournament
+                                  Changes here require a Tournament Update to take effect
+
+Modify > Create School        -   Creates a new school and assigns it to a sectional
+Modify > Move School          -   Moves an existing school from 1 tournament match to another
+Modify > Update Tournament    -   Recreates the tournament using the current Config settings
