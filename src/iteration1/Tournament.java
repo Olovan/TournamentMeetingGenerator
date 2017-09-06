@@ -1,6 +1,7 @@
 package iteration1;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.io.BufferedWriter;
@@ -224,6 +225,56 @@ public class Tournament implements Serializable {
 
         return retMatches;
     }
+    
+    public double getAvgDistanceFromHost(Match secMatch, int participants) {
+    	double distanceArray[] = new double[participants];
+    	double avgDist = 0;
+    	int i = 0;
+    	
+    	School hostSchool = secMatch.host;
+
+        // list competing schools
+        for (School sc : secMatch.schools) {
+            distanceArray[i] = School.DistanceBetweenSchools(sc, hostSchool);
+            i++;
+        }
+        
+        for (i = 0; i < distanceArray.length; i++) {
+        	avgDist = avgDist + distanceArray[i];
+        }
+        
+        avgDist = avgDist/participants;
+        
+        avgDist = Math.round(avgDist * 100);
+        avgDist = avgDist/100;
+        
+        return avgDist;
+    }
+    
+    public double getMaxDistanceFromHost(Match secMatch, int participants) {
+    	double distanceArray[] = new double[participants];
+    	double maxDist = 0;
+    	int i = 0;
+    	
+    	School hostSchool = secMatch.host;
+
+        // list competing schools
+        for (School sc : secMatch.schools) {
+            distanceArray[i] = School.DistanceBetweenSchools(sc, hostSchool);
+            i++;
+        }
+        
+        for (i = 0; i < distanceArray.length; i++) {
+        	if (distanceArray[i] > maxDist) {
+        		maxDist = distanceArray[i];
+        	}
+        }
+        
+        maxDist = Math.round(maxDist * 100);
+        maxDist = maxDist/100;
+        
+        return maxDist;
+    }
 
     // Format tournament schedule into tabular form.
     private String formatString() {
@@ -239,7 +290,7 @@ public class Tournament implements Serializable {
         else {
             for(int i = 0; i < sectionals.length; i++) {
                 // header
-                sb.append("\r\nSectional #").append(i + 1).append("\r\n");
+                sb.append("\r\nSectional #").append(i + 1).append(" MAX: ").append(getMaxDistanceFromHost(sectionals[i], sectionals.length)).append(" AVG: ").append(getAvgDistanceFromHost(sectionals[i], sectionals.length)).append("\r\n");
 
                 // match listing
                 sb.append(sectionals[i].toString());
@@ -277,14 +328,14 @@ public class Tournament implements Serializable {
         }
 
         // list state if held
-        sb.append("\r\n\t\t\t  STATE\r\n");
+        sb.append("\r\n\t\t\tSTATE\r\n");
         if (finals == null || finals[0] == null) {
             sb.append(meetClosed);
         }
         else {
             for(int i = 0; i < finals.length; i++) {
                 // header
-                sb.append("\r\nState #").append(i + 1).append("\r\n");
+                sb.append("\r\nState #").append(i + 1).append(" MAX: ").append("\r\n");
 
                 // match listing
                 sb.append(finals[i].toString());
